@@ -1,0 +1,15 @@
+/* ==================================================
+   🌱 VARIABLES GLOBALES (ROOT)
+================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root{
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F3F3F3;
+    --color-text-primary: #505050;
+    --color-text-secondary: #505050;
+    --color-tertiary: #3A9BD1;
+    --color-tertiary-hover: #0092E3;
+    --color-error: #CC4726;
+}
