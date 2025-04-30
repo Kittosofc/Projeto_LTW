@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/register.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+          <form class="form-login" action="/login" method="POST">
+            <div class="container-title">
+                <h2>Acesse sua conta</h2>
+                <p>Informe suas credenciais para acessar sua conta e ter acesso aos benefícios exclusivos dos clientes dinoco</p>
+            </div>
+            
+            <input class="input" type="text" name="username" placeholder="Nome completo" required>
+            <input class="input" type="text" name="nif" placeholder="NIF" required>
+            <input class="input" type="email" name="email" placeholder="Email" required>
+            <input class="input" type="password" name="password" placeholder="Senha" required>
+
+             <label class="checkbox-label">
+                <input class="checkbox" type="checkbox" name="terms" required>
+                <span>Li e aceito os <a href="#">termos de uso</a></span>
+            </label>
+            <button type="submit">Criar conta</button>
+          </form>
+        </div>
+    
+        <div class="right-side">
+          <div class="overlay">
+            <h3>Já faz é um cliente Dinâmico?</h3>
+            <p>acesse sua conta gratuita e tenha acesso a todos os beneficios incriveis que só o posto dinâmico oferece.</p>
+            <a href="index.html" class="login-btn">Acessar</a>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
