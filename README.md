@@ -33,32 +33,31 @@ A linguagem é interpretada por um **parser construído com Python + PLY**, e pe
 
 ## 📂 Estrutura do Projeto
 
-SGPC/
-├── public/                 # Frontend - Interface web (HTML, CSS, JS)
-│   ├── index.html          # Página inicial / login
-│   ├── dashboard.html      # Painel principal após login
-│   ├── styles/             # Ficheiros de estilos CSS
-│   └── scripts/            # Scripts JS (interações, fetch API, etc.)
+📁 SGPC
+├── 📂 public              → Frontend (HTML, CSS, JS)
+│   ├── index.html        → Página de login
+│   ├── dashboard.html    → Painel principal
+│   ├── 📂 styles          → Arquivos CSS
+│   └── 📂 scripts         → JS: interações, chamadas API
 │
-├── routes/                 # Rotas da API (Node.js)
-│   ├── userRoutes.js       # Rotas relacionadas a utilizadores
-│   └── serviceRoutes.js    # Rotas para agendamento, indisponibilidade, etc.
+├── 📂 routes              → Rotas da API (Node.js)
+│   ├── userRoutes.js     → Rotas de utilizadores
+│   └── serviceRoutes.js  → Agendamento, indisponibilidades
 │
-├── controllers/            # Controladores - lógica do backend
-│   ├── userController.js   # Funções de autenticação, gestão de utilizadores
-│   └── serviceController.js# Funções para serviços, férias, relatórios
+├── 📂 controllers         → Lógica de backend
+│   ├── userController.js → Autenticação, utilizadores
+│   └── serviceController.js → Serviços, férias, relatórios
 │
-├── lss/                    # LSS - Parser e interpretador (Python + PLY)
-│   ├── lexer.py            # Analisador léxico (tokens)
-│   ├── parser.py           # Analisador sintático (gramática)
-│   └── interpreter.py      # Execução dos comandos LSS e ligação à BD
+├── 📂 lss                 → LSS (Python + PLY)
+│   ├── lexer.py          → Analisador léxico
+│   ├── parser.py         → Analisador sintático
+│   └── interpreter.py    → Interpretador e ligação BD
 │
-├── database/               # Base de dados - scripts SQL
-│   ├── schema.sql          # Script para criação das tabelas
-│   └── seed.sql            # Dados de exemplo (opcional)
+├── 📂 database            → Scripts da base de dados
+│   ├── schema.sql        → Criação de tabelas
+│   └── seed.sql          → Dados de exemplo
 │
-├── server.js               # Servidor principal em Node.js
-├── package.json            # Lista de dependências Node.js
-├── .env                    # Variáveis de ambiente (ex: credenciais da BD)
-└── README.md               # Documentação do projeto (este ficheiro)
-
+├── server.js             → Servidor principal Node.js
+├── package.json          → Dependências do projeto
+├── .env                  → Variáveis de ambiente
+└── README.md             → Documentação do projeto
