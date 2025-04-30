@@ -34,30 +34,31 @@ A linguagem é interpretada por um **parser construído com Python + PLY**, e pe
 ## 📂 Estrutura do Projeto
 
 📁 SGPC
-├── 📂 public              → Frontend (HTML, CSS, JS)
-│   ├── index.html        → Página de login
-│   ├── dashboard.html    → Painel principal
-│   ├── 📂 styles          → Arquivos CSS
-│   └── 📂 scripts         → JS: interações, chamadas API
-│
-├── 📂 routes              → Rotas da API (Node.js)
-│   ├── userRoutes.js     → Rotas de utilizadores
-│   └── serviceRoutes.js  → Agendamento, indisponibilidades
-│
-├── 📂 controllers         → Lógica de backend
-│   ├── userController.js → Autenticação, utilizadores
-│   └── serviceController.js → Serviços, férias, relatórios
-│
-├── 📂 lss                 → LSS (Python + PLY)
-│   ├── lexer.py          → Analisador léxico
-│   ├── parser.py         → Analisador sintático
-│   └── interpreter.py    → Interpretador e ligação BD
-│
-├── 📂 database            → Scripts da base de dados
-│   ├── schema.sql        → Criação de tabelas
-│   └── seed.sql          → Dados de exemplo
-│
-├── server.js             → Servidor principal Node.js
-├── package.json          → Dependências do projeto
-├── .env                  → Variáveis de ambiente
-└── README.md             → Documentação do projeto
+
+📂 public              → Frontend (HTML, CSS, JS)
+    index.html        → Página de login
+    dashboard.html    → Painel principal
+    📂 styles          → Arquivos CSS
+    📂 scripts         → JS: interações, chamadas API
+
+📂 routes              → Rotas da API (Node.js)
+    userRoutes.js     → Rotas de utilizadores
+    serviceRoutes.js  → Agendamento, indisponibilidades
+
+📂 controllers         → Lógica de backend
+    userController.js → Autenticação, utilizadores
+    serviceController.js → Serviços, férias, relatórios
+
+📂 lss                 → LSS (Python + PLY)
+    lexer.py          → Analisador léxico
+    parser.py         → Analisador sintático
+    interpreter.py    → Interpretador e ligação BD
+
+📂 database            → Scripts da base de dados
+    schema.sql        → Criação de tabelas
+    seed.sql          → Dados de exemplo
+
+server.js             → Servidor principal Node.js  
+package.json          → Dependências do projeto  
+.env                  → Variáveis de ambiente  
+README.md             → Documentação do projeto
