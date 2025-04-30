@@ -33,4 +33,32 @@ A linguagem é interpretada por um **parser construído com Python + PLY**, e pe
 
 ## 📂 Estrutura do Projeto
 
-SGPC/ │ ├── public/ # HTML, CSS, JS do frontend │ ├── index.html │ ├── login.html │ ├── dashboard.html │ ├── styles/ │ └── scripts/ │ ├── routes/ # Endpoints da API (Node.js) │ └── userRoutes.js │ ├── controllers/ # Lógica da aplicação │ └── userController.js │ ├── lss/ # Interpretador da LSS (Python + PLY) │ ├── lexer.py │ ├── parser.py │ └── interpreter.py │ ├── database/ # Scripts SQL e ligação à BD │ └── schema.sql │ ├── server.js # Servidor principal Node.js ├── package.json # Dependências do Node.js ├── .env # Variáveis de ambiente └── README.md # Este ficheiro
+SGPC/
+├── public/                 # Frontend - Interface web (HTML, CSS, JS)
+│   ├── index.html          # Página inicial / login
+│   ├── dashboard.html      # Painel principal após login
+│   ├── styles/             # Ficheiros de estilos CSS
+│   └── scripts/            # Scripts JS (interações, fetch API, etc.)
+│
+├── routes/                 # Rotas da API (Node.js)
+│   ├── userRoutes.js       # Rotas relacionadas a utilizadores
+│   └── serviceRoutes.js    # Rotas para agendamento, indisponibilidade, etc.
+│
+├── controllers/            # Controladores - lógica do backend
+│   ├── userController.js   # Funções de autenticação, gestão de utilizadores
+│   └── serviceController.js# Funções para serviços, férias, relatórios
+│
+├── lss/                    # LSS - Parser e interpretador (Python + PLY)
+│   ├── lexer.py            # Analisador léxico (tokens)
+│   ├── parser.py           # Analisador sintático (gramática)
+│   └── interpreter.py      # Execução dos comandos LSS e ligação à BD
+│
+├── database/               # Base de dados - scripts SQL
+│   ├── schema.sql          # Script para criação das tabelas
+│   └── seed.sql            # Dados de exemplo (opcional)
+│
+├── server.js               # Servidor principal em Node.js
+├── package.json            # Lista de dependências Node.js
+├── .env                    # Variáveis de ambiente (ex: credenciais da BD)
+└── README.md               # Documentação do projeto (este ficheiro)
+
