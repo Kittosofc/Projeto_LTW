@@ -33,3 +33,4 @@ A linguagem é interpretada por um **parser construído com Python + PLY**, e pe
 
 ## 📂 Estrutura do Projeto
 
+SGPC/ │ ├── public/ # HTML, CSS, JS do frontend │ ├── index.html │ ├── login.html │ ├── dashboard.html │ ├── styles/ │ └── scripts/ │ ├── routes/ # Endpoints da API (Node.js) │ └── userRoutes.js │ ├── controllers/ # Lógica da aplicação │ └── userController.js │ ├── lss/ # Interpretador da LSS (Python + PLY) │ ├── lexer.py │ ├── parser.py │ └── interpreter.py │ ├── database/ # Scripts SQL e ligação à BD │ └── schema.sql │ ├── server.js # Servidor principal Node.js ├── package.json # Dependências do Node.js ├── .env # Variáveis de ambiente └── README.md # Este ficheiro
