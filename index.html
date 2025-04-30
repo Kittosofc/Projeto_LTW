@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posto Dinâmico</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+    
+        body {
+          font-family: 'Poppins', sans-serif;
+          background-color: #f0f0f0;
+          color: #fff;
+        }
+    
+        header {
+          background-color: #3A9BD1;
+          padding: 1.5rem 2rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+    
+        .logo {
+          display: flex;
+          align-items: center;
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #fff;
+        }
+    
+        .logo_img {
+          width: 40px;
+          height: 40px;
+          margin-right: 10px;
+        }
+    
+        nav a {
+          margin-left: 1rem;
+          text-decoration: none;
+        }
+    
+        .btn {
+          padding: 10px 20px;
+          border-radius: 6px;
+          background-color: #fff;
+          color: #3A9BD1;
+          font-weight: 600;
+          transition: 0.3s;
+        }
+    
+        .btn:hover {
+          background-color: #e0e0e0;
+        }
+    
+        .btn-outline {
+          background: transparent;
+          color: #fff;
+          border: 2px solid #fff;
+        }
+    
+        .btn-outline:hover {
+          background: #fff;
+          color: #3A9BD1;
+        }
+    
+        .hero {
+          background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('/public/IMG/gasolinera.jpg') no-repeat center center;
+          background-size: cover;
+          height: calc(100vh - 80px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+        }
+    
+        .hero-text {
+          max-width: 650px;
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding: 2rem;
+          border-radius: 12px;
+        }
+    
+        .hero-text h1 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+    
+        .hero-text p {
+          font-size: 1.1rem;
+          margin-bottom: 2rem;
+          color: #eee;
+        }
+    
+        .hero-buttons {
+          margin-top: 1rem;
+        }
+    
+        .hero-buttons a {
+          margin: 0 10px;
+          text-decoration: none;
+        }
+    
+        .features {
+          background: #fff;
+          color: #333;
+          padding: 3rem 2rem;
+          text-align: center;
+        }
+    
+        .features h2 {
+          font-size: 2rem;
+          color: #3A9BD1;
+          margin-bottom: 2rem;
+        }
+    
+        .features ul {
+          list-style: none;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 2rem;
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 0;
+        }
+    
+        .features li {
+          background: #f7f7f7;
+          padding: 1.5rem;
+          border-radius: 10px;
+          box-shadow: 0 0 8px rgba(0,0,0,0.05);
+        }
+    
+        footer {
+          background: #3A9BD1;
+          text-align: center;
+          padding: 1rem;
+          color: #fff;
+          font-size: 0.9rem;
+        }
+    
+        @media screen and (max-width: 768px) {
+          .hero-text h1 {
+            font-size: 2rem;
+          }
+    
+          .features ul {
+            grid-template-columns: 1fr;
+          }
+    
+          header {
+            flex-direction: column;
+            gap: 1rem;
+          }
+    
+          nav {
+            display: flex;
+            gap: 1rem;
+          }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img class="logo_img" src="/public/IMG/logo.png" alt="Logo">
+          LARM
+        </div>
+        <nav>
+          <a href="/public/login.html" class="btn">Login</a>
+          <a href="/public/registrar.html" class="btn btn-outline">Registrar</a>
+        </nav>
+      </header>
+    
+      <main class="hero">
+        <div class="hero-text">
+          <h1>Abasteça com qualidade<br>e ganhe benefícios exclusivos</h1>
+          <p>No Posto Dinâmico você acumula pontos a cada abastecimento e troca por vantagens reais. Faça parte do clube de clientes inteligentes!</p>
+          <div class="hero-buttons">
+            <a href="/public/login.html" class="btn">Login</a>
+            <a href="/public/registrar.html" class="btn btn-outline">Registrar</a>
+          </div>
+        </div>
+      </main>
+    
+      <section class="features">
+        <h2>Por que escolher o Posto Dinâmico?</h2>
+        <ul>
+          <li><strong>⛽ Combustível de qualidade</strong><br>Gasolina e diesel certificados, com monitoramento constante.</li>
+          <li><strong>🎁 Programa de fidelidade</strong><br>Acumule pontos e troque por descontos, produtos ou serviços.</li>
+          <li><strong>📱 Agendamento fácil</strong><br>Use o app ou o site para agendar serviços e evitar filas.</li>
+          <li><strong>💳 Pagamento digital</strong><br>Compre e pague com segurança usando cartão ou app.</li>
+        </ul>
+      </section>
+    
+      <footer>
+        &copy; 2025 Posto Dinâmico. Todos os direitos reservados.
+      </footer>
+</body>
+</html>
