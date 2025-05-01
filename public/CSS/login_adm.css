@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F3F3F3;
+  --color-text-primary: #505050;
+  --color-text-secondary: #505050;
+  --color-tertiary: #3A9BD1;
+  --color-tertiary-hover: #0092E3;
+  --color-error: #CC4726;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden; /* impede que o conteúdo ultrapasse os cantos arredondados */
+  position: relative;
+}
+
+.login-header {
+  background-color: var(--color-tertiary);
+  padding: 20px;
+  text-align: left;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px; /* arredonda o topo do header */
+}
+
+.login-header h2 {
+  color: white;
+  margin: 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.login-form {
+  padding: 30px 20px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: 14px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 42px;
+}
+
+.password-wrapper .info-icon {
+  position: absolute;
+  top: 38%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #E0E0E0;
+  border-radius: 50%;
+  color: var(--color-text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.login-button {
+  background-color: var(--color-tertiary);
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: var(--color-tertiary-hover);
+}
