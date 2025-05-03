@@ -1,0 +1,134 @@
+/* ================================
+   🧭 NAVBAR ESTILO FINAL
+================================ */
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* fonte mais próxima */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600; /* mantém negrito */
+    color: #444;
+    font-size: 1rem;
+  }
+  
+  .user-info img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    font-weight: 600; /* deixa igual ao nome do usuário */
+    color: #444;
+    font-size: 1rem; /* mesmo tamanho da user-info */
+    transition: color 0.2s ease;
+  }
+  
+  .menu a:hover {
+    color: #51B1E7;
+  }
+
+  /*-----------------------------------------------------------------*/
+
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #333;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    align-items: center;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  main {
+    padding: 20px 40px;
+  }
+  
+  .transactions h3 {
+    color: #666;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* NOVO BLOCO para suporte a ícones com texto */
+  .icon-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: #f2f2f2;
+  }
+  
+  .transaction .item {
+    font-weight: 600;
+    display: block;
+  }
+  
+  .transaction .price {
+    font-size: 13px;
+    color: #777;
+  }
+  
+  .points {
+    color: #1a73e8;
+    font-weight: 500;
+  }
+  
+  
