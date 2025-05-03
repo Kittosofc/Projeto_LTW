@@ -1,0 +1,206 @@
+/* ==================================================
+   🔤 BASE
+================================================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  
+  /* ==================================================
+     🧭 HEADER
+  ================================================== */
+  header {
+    background-color: var(--color-bg-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .menu a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  .menu a:hover {
+    color: var(--color-tertiary);
+  }
+  
+  /* ==================================================
+     🧱 LAYOUT
+  ================================================== */
+  .container {
+    display: flex;
+    gap: 3.5rem;
+    padding: 3rem;
+  }
+  
+  .main-panel {
+    flex: 2.5;
+  }
+  
+  .transactions {
+    flex: 1;
+    background: var(--color-bg-secondary);
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+  
+  /* ==================================================
+     🏆 PONTUAÇÃO
+  ================================================== */
+  .points-box {
+    background-color: var(--color-tertiary);
+    color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .points-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-mini {
+    width: 30px;
+    height: 30px;
+    background-color: #51B1E7;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  .points-box h1 {
+    font-size: 3rem;
+    margin-top: 1rem;
+  }
+  
+  /* ==================================================
+     🎁 BENEFÍCIO
+  ================================================== */
+  .reward-box {
+    background: var(--color-bg-secondary);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .reward-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .progress-bar {
+    height: 10px;
+    background: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 100%;
+    background: var(--color-tertiary);
+  }
+  
+  .redeem {
+    color: var(--color-tertiary);
+    font-weight: 600;
+    text-align: right;
+    text-decoration: none;
+  }
+  
+  /* ==================================================
+     ⛽ COMBUSTÍVEIS
+  ================================================== */
+  .fuel-prices h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .fuel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .fuel-table td {
+    padding: 0.5rem 0;
+  }
+  
+  .up {
+    color: red;
+    font-size: 0.85rem;
+    margin-left: 8px;
+  }
+  
+  .down {
+    color: green;
+    font-size: 0.85rem;
+    margin-left: 8px;
+  }
+  
+  /* ==================================================
+     💳 TRANSAÇÕES
+  ================================================== */
+  .transactions h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-secondary);
+  }
+  
+  .txn-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .txn-icon {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+  }
+  
+  .txn-info {
+    flex: 1;
+  }
+  
+  .txn-info .item {
+    font-weight: 500;
+  }
+  
+  .txn-info small {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+  
+  .txn-points {
+    font-weight: bold;
+    color: var(--color-tertiary);
+  }

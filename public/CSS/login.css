@@ -1,0 +1,137 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background: var(--color-bg-primary);
+    font-family: 'Poppins';
+    font-style: normal;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  .left-side, .right-side {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.8rem;
+  }
+  
+  .left-side {
+    background: var(--color-bg-primary);
+    padding: 1.8rem;
+    flex-direction: column;
+  }
+  
+  .form-login {
+    max-width: 350px;
+    width: 100%;
+  }
+  
+  .form-login h2 {
+    color: var(--color-tertiary);
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center; /* ← esta linha centraliza os textos */
+
+  }
+  
+  .form-login p {
+    font-size: 12px;
+    color: #9F9F9F;
+    margin-bottom: 20px;
+    text-align: center; /* ← esta linha centraliza os textos */
+
+  }
+  
+  .form-login input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    background-color: var(--color-bg-secondary);
+    box-sizing: border-box;
+
+  }
+  
+  .password-container {
+    position: relative;
+  }
+
+  .password-container .forgot {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    font-size: 12px;
+    color: #9F9F9F;;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  
+  .form-login button {
+    width: 100%;
+    padding: 12px;
+    background: var(--color-tertiary);
+    border: none;
+    color: var(--color-bg-secondary);
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: 'Poppins';
+    font-style: normal;
+  }
+  
+  .form-login button:hover {
+    background: #2e89bb;
+  }
+  
+  .right-side {
+    background: url('/public/IMG/SGPC.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .overlay {
+    background-color: rgba(255, 255, 255, 0.363);
+    padding: 60px;
+    max-width: 300px;
+    border-radius: 12px;
+
+  }
+  
+  .overlay h3 {
+    font-size: 30px;
+    margin: 0px 0px 50px;
+    color: #000000;
+  }
+  
+  .overlay p {
+    font-size: 14px;
+    margin: 0px 0px 50px;
+    color: #000000;
+  }
+  
+  .register-btn {
+    background: var(--color-tertiary);
+    color: var(--color-bg-secondary);
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    display: flex;
+    justify-content: center;
+
+  }
+  
+  .register-btn:hover {
+    background: #2e89bb;
+  }
+  

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Postos</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    button {
+      margin-top: 5px;
+      padding: 4px 10px;
+      background-color: #3A9BD1;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    button:hover {
+      background-color: #2e89bb;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Scripts do Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.min.js"></script>
+
+  <script>
+    // Ponto inicial genérico (antes da localização real)
+    const map = L.map("map").setView([0, 0], 2);
+
+    // Camada do mapa base
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap"
+    }).addTo(map);
+
+    // Lista dos postos de gasolina
+    const postos = [
+      { nome: "Posto A", lat: 41.23968186054807, lon: -8.666707938645741 },
+      { nome: "Posto B", lat: 41.2401, lon: -8.6702 }
+    ];
+
+    let userLat = 0;
+    let userLon = 0;
+    let routeControl = null;
+
+    // Obter localização atual
+    navigator.geolocation.getCurrentPosition((pos) => {
+      userLat = pos.coords.latitude;
+      userLon = pos.coords.longitude;
+
+      map.setView([userLat, userLon], 14); // Centraliza no usuário
+
+      const userMarker = L.marker([userLat, userLon]).addTo(map)
+        .bindPopup("📍 Você está aqui").openPopup();
+
+      // Adiciona os postos no mapa
+      postos.forEach(posto => {
+        const marker = L.marker([posto.lat, posto.lon]).addTo(map);
+        const dist = (map.distance([userLat, userLon], [posto.lat, posto.lon]) / 1000).toFixed(2);
+
+        const content = `
+          <strong>${posto.nome}</strong><br>
+          Distância: ${dist} km<br>
+          <button onclick="rota(${posto.lat}, ${posto.lon})">Traçar rota</button>
+        `;
+        marker.bindPopup(content);
+      });
+
+    }, () => {
+      alert("❌ Não foi possível obter sua localização.");
+    });
+
+    // Função global de traçar rota
+    function rota(destLat, destLon) {
+      if (routeControl) {
+        map.removeControl(routeControl);
+      }
+
+      routeControl = L.Routing.control({
+        waypoints: [
+          L.latLng(userLat, userLon),
+          L.latLng(destLat, destLon)
+        ],
+        routeWhileDragging: false,
+        show: false,
+        addWaypoints: false
+      }).addTo(map);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* ================================
+   🧭 NAVBAR ESTILO FINAL
+================================ */
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* fonte mais próxima */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600; /* mantém negrito */
+    color: #444;
+    font-size: 1rem;
+  }
+  
+  .user-info img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    font-weight: 600; /* deixa igual ao nome do usuário */
+    color: #444;
+    font-size: 1rem; /* mesmo tamanho da user-info */
+    transition: color 0.2s ease;
+  }
+  
+  .menu a:hover {
+    color: #51B1E7;
+  }
+
+  /* ================================*/
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, rgba(230, 100, 101, 0.2), rgba(145, 152, 229, 0.2)); /* Fundo gradiente suave vermelho/azul */
+    color: #333;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Espaço entre imagem e detalhes */
+    align-items: center; /* Centraliza verticalmente */
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: none; /* Remove a sombra do retângulo */
+    background: none; /* Remove o fundo do retângulo */
+}
+
+.product-image {
+    flex: 1; /* Ocupa espaço proporcional */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.product-image img {
+    max-width: 350px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+.product-details {
+    flex: 1; /* Ocupa espaço proporcional */
+    max-width: 600px;
+    text-align: left; /* Alinha texto à esquerda */
+    margin-left: 40px; /* Espaço entre imagem e texto */
+}
+
+.product-details h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2d2d2d;
+}
+
+.product-details .points {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #3b82f6;
+    margin-bottom: 30px;
+}
+
+.product-details p {
+    font-size: 20px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.product-details p:first-of-type {
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.resgatar-btn {
+    background-color: #3b82f6;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.resgatar-btn:hover {
+    background-color: #2563eb;
+}
