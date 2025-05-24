@@ -357,3 +357,9 @@ body[data-theme="dark"] .main-menu img {
     justify-content: center;
   }
 }
+*/
+
+/* Para os icons de cliente e funcionário ficar azul */
+.sub-menu li:hover .icon-submenu {
+  filter: brightness(0) saturate(100%) invert(56%) sepia(68%) saturate(457%) hue-rotate(156deg) brightness(91%) contrast(89%);
+}
