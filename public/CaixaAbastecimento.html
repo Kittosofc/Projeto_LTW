@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DINÂMICO - Sistema de Caixa</title>
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/caixaAbastecimento.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      CAIXA DISPONÍVEL
+    </div>
+
+    <div class="client-section">
+      <div class="client-info">
+        <span class="client-label">Definir Cliente (F2)</span>
+        <span class="client-status">Sem cliente identificado</span>
+      </div>
+    </div>
+
+    <div class="main-content">
+      
+      <div class="left-panel">
+        <div class="quantity-price-container">
+          <!-- Espaço reservado -->
+        </div>
+
+        <div class="bombas-container">
+        <div class="bomba bloco-cinza">
+          <h2>01</h2>
+          <p>Gas.</p>
+          <span>85%</span>
+          <strong>R$ 0,00</strong>
+        </div>
+        <div class="bomba bloco-cinza">
+          <h2>03</h2>
+          <p>Gas. adt</p>
+          <span>41%</span>
+          <strong>R$ 0,00</strong>
+        </div>
+        <div class="bomba bloco-cinza">
+          <h2>05</h2>
+          <p>Etanol</p>
+          <span>25%</span>
+          <strong>R$ 0,00</strong>
+        </div>
+        <div class="bomba bloco-vermelho">
+          <h2>02</h2>
+          <p>Gas.</p>
+          <span>15%</span>
+          <strong>R$ 0,00</strong>
+        </div>
+        <div class="bomba bloco-cinza">
+          <h2>04</h2>
+          <p>Gas. adt</p>
+          <span>95%</span>
+          <strong>R$ 0,00</strong>
+        </div>
+        <div class="bomba bloco-azul">
+          <h2>06</h2>
+          <p>Etanol</p>
+          <span>50%</span>
+          <strong>R$ 37,51</strong>
+        </div>
+      </div>
+
+        <div class="logo-container">
+          <div class="logo">
+            <a href="">
+              <img src="IMG/logo2.png" alt="Logo" style="max-width: 120px; height: auto;">
+            </a>
+          </div>
+        </div>
+
+        <div class="shortcuts">
+          F-16 Emitir Fatura<br />
+          F-13 Gerar QRcode<br />
+          F-10 Gerar cód. de barras<br />
+          F-09 Reconhecimento de cód. de barras<br />
+          F-08 Inserção de item repetidos
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="right-panel">
+          <button class="desconto">Desconto (F6)</button>
+          <button class="cancelar">Cancelar Item (F5)</button>
+        </div>
+
+        <div class="cart-stats">
+          <div class="stat-item">
+            <span>Itens</span>
+            <span class="total-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span>Quantidade</span>
+            <span class="total-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span>Devolução/Desconto</span>
+            <span class="total-value">€ 0,00</span>
+          </div>
+        </div>
+
+        <button class="finalize">
+          <span>Finalizar venda (F3)</span>
+          <span class="total-value">€ 0,00</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="bottom-actions">
+      <button class="action-btn">
+        <span>Cancelar operação</span>
+        <span class="shortcut-key">(ESC)</span>
+      </button>
+      <button class="action-btn">
+        <span>Abastecimento</span>
+        <span class="shortcut-key">(F4)</span>
+      </button>
+      <button class="action-btn">
+        <span>Abrir gaveta</span>
+        <span class="shortcut-key">(F8)</span>
+      </button>
+      <button class="action-btn">
+        <span>Devolução</span>
+        <span class="shortcut-key">(F10)</span>
+      </button>
+      <div class="selected-action">
+        <button class="action-btn">
+          <span>Fechar caixa</span>
+          <span class="shortcut-key">(F12)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="new_product.js"></script>
+</body>
+
+</html>
