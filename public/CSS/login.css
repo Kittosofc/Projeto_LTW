@@ -93,7 +93,7 @@ body, html {
   }
   
   .right-side {
-    background: url('/public/IMG/SGPC.png') no-repeat center center;
+    background: url('/IMG/SGPC.png') no-repeat center center;
     background-size: cover;
     position: relative;
   }
