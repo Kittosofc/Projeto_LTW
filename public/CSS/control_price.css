@@ -1,0 +1,64 @@
+body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .precos-container {
+      max-width: 500px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .preco-item h3 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .preco-item p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .preco-input {
+      display: flex;
+      align-items: center;
+      background: #f1f1f1;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .preco-input .simbolo {
+      color: #999;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .preco-input input {
+      border: none;
+      background: transparent;
+      font-size: 1rem;
+      color: #333;
+      width: 100%;
+    }
+
+    .btn-atualizar {
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .btn-atualizar:hover {
+      background-color: #1976d2;
+    }
+
+    .main {
+      padding: 20px;
+      margin-left: 250px; /* espaço para sidebar */
+    }

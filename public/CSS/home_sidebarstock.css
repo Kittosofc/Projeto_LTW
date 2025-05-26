@@ -3,7 +3,7 @@
   --color-bg-secondary: #f9f9f9;
   --color-border: #e0e0e0;
   --color-text: #333;
-  --color-active: #3A9BD1;
+  --color-active: white;
   --color-icon: #505050;
   --color-hover: #3A9BD1; /* Nova variável para o hover */
   --color-submenu-bg: #FFFFFF; /* Nova variável para fundo do submenu */
@@ -11,20 +11,6 @@
   --color-input-bg: #f2f2f2; /* Nova variável para fundo do input */
   --color-select-text: #4F4F4F; /* Nova variável para texto do select */
   --color-placeholder: #999;
-}
-body[data-theme="dark"] {
-  --color-bg-primary: #1a1a1a;
-  --color-bg-secondary: #2d2d2d;
-  --color-border: #444;
-  --color-text: #f0f0f0;
-  --color-active: #4db8ff;
-  --color-icon: #cccccc;
-  --color-hover: #4db8ff;
-  --color-submenu-bg: #2d2d2d;
-  --color-submenu-text: #cccccc;
-  --color-input-bg: #3d3d3d;
-  --color-select-text: #f0f0f0;
-  --color-placeholder: #aaaaaa;
 }
 
 * {
@@ -49,10 +35,20 @@ body {
   background-color: var(--color-bg-primary);
 }
 
-
+.main-menu > li > a.active {
+  background-color: #6bb7de;
+  border-radius: 6px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 8px;
+  box-sizing: border-box;
+}
 /* Sidebar Styles */
 .sidebar {
-  position: relative; /* Garante o posicionamento absoluto dos filhos */
+  posleft: relative; /* Garante o posicionamento absoluto dos filhos */
   height: 100vh; /* Altura total da tela */
   padding-top: 0; /* Removido o padding-top */
   display: flex;
@@ -166,10 +162,11 @@ body {
   color: var(--color-icon);
 }
 
-.main-menu > li {
+/*Side bar - barra divisória*/
+/*.main-menu > li {
   border-bottom: 1px solid var(--color-border);
   position: relative;
-}
+}*/
 
 /* Remove marcadores de subitens */
 .main-menu ul {
@@ -356,10 +353,4 @@ body[data-theme="dark"] .main-menu img {
     width: 36px;
     justify-content: center;
   }
-}
-*/
-
-/* Para os icons de cliente e funcionário ficar azul */
-.sub-menu li:hover .icon-submenu {
-  filter: brightness(0) saturate(100%) invert(56%) sepia(68%) saturate(457%) hue-rotate(156deg) brightness(91%) contrast(89%);
 }
