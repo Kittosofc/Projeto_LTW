@@ -1,0 +1,356 @@
+:root {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #f9f9f9;
+  --color-border: #e0e0e0;
+  --color-text: #333;
+  --color-active: white;
+  --color-icon: #505050;
+  --color-hover: #3A9BD1; /* Nova variável para o hover */
+  --color-submenu-bg: #FFFFFF; /* Nova variável para fundo do submenu */
+  --color-submenu-text: #666; /* Nova variável para texto do submenu */
+  --color-input-bg: #f2f2f2; /* Nova variável para fundo do input */
+  --color-select-text: #4F4F4F; /* Nova variável para texto do select */
+  --color-placeholder: #999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Correção principal: reset completo das listas */
+ul, ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-primary);
+}
+
+.main-menu > li > a.active {
+  background-color: #6bb7de;
+  border-radius: 6px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 8px;
+  box-sizing: border-box;
+}
+/* Sidebar Styles */
+.sidebar {
+  posleft: relative; /* Garante o posicionamento absoluto dos filhos */
+  height: 100vh; /* Altura total da tela */
+  padding-top: 0; /* Removido o padding-top */
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  background: var(--color-bg-primary);
+  padding: 20px;
+  border-right: 1px solid var(--color-border);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  position: relative; /* Garante o posicionamento absoluto dos filhos */
+
+  background: var(--color-bg-primary);
+  color: var(--color-text);
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 0;
+}
+
+#theme-toggle {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: var(--color-border);
+  color: var(--color-text);
+  transition: all 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem; gap: 8px;
+  /*padding: 0.5rem 0.75rem; /* Ajuste para caber o texto */
+  /*border-radius: 50px; /* Forma arredondada */
+  /*width: auto; /* Remove largura fixa */
+}
+
+#theme-toggle:hover {
+  background: var(--color-active);
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+  padding-top:10px;
+
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+}
+
+.username {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.main {
+  background-color: var(--color-bg-secondary);
+}
+
+.username, .main-menu > li > a {
+  color: var(--color-text);
+}
+
+.sidebar nav a svg {
+  color: var(--color-icon);
+}
+
+/* Menu Styles - Correção dos marcadores */
+.main-menu {
+  width: 100%;
+  top: 250px; /* Ajuste esta distância conforme necessário */
+  /*left: 0;
+  right: 0;
+  padding: 0 20px;*/
+  margin-top: 99px;
+}
+
+/* Ajuste para os itens com submenu */
+.main-menu > li.has-submenu {
+  margin-bottom: 15px; /* Espaço entre itens principais */
+}
+
+/* Se quiser destacar visualmente os itens com submenu */
+.main-menu > li.has-submenu > a {
+  position: relative;
+  padding-right: 20px; /* Espaço para o ícone */
+}
+
+.main-menu > li.has-submenu > a::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: var(--color-icon);
+}
+
+/*Side bar - barra divisória*/
+/*.main-menu > li {
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}*/
+
+/* Remove marcadores de subitens */
+.main-menu ul {
+  list-style-type: none !important;
+}
+
+.main-menu > li > a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.menu-icon {
+  width: 16px;
+  height: 16px;
+  color: inherit;
+}
+
+.main-menu img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.main-menu span {
+  flex: 1;
+}
+
+.sub-menu {
+  display: none;
+  padding-left: 32px;
+  background-color: var(--color-submenu-bg); /* Era #fff */
+  transition: all 0.4s ease; /* Aumentei de 0.5s para 0.4s (mais suave) */
+}
+
+.sub-menu li {
+  padding: 8px 0;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Garante que nenhum marcador apareça */
+.sub-menu li::before {
+  content: none !important;
+}
+
+.sub-menu li:hover {
+  color: var(--color-active);
+}
+
+.main-menu li:hover > .sub-menu {
+  display: block;
+  transition-delay: 0.4s; /* Adicionei um pequeno delay para melhor experiência */
+}
+
+/* Active/Hover States */
+.main-menu > li > a.active,
+.main-menu > li > a:hover {
+   color: var(--color-hover);
+}
+
+.main-menu > li > a.active svg,
+.main-menu > li > a:hover svg,
+.main-menu > li > a.active img,
+.main-menu > li > a:hover img {
+  filter: brightness(0) saturate(100%) invert(56%) sepia(68%) saturate(457%) hue-rotate(156deg) brightness(91%) contrast(89%);
+}
+
+
+
+/* Main Content Styles */
+.main {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--color-bg-secondary);
+}
+
+.header {
+  height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  padding: 0 25px;
+  /*background-color: var(--color-bg-primary);*/
+}
+
+.location-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.location-wrapper img.icon-location {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  margin-right: 2px;
+}
+
+.location-wrapper select {
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-select-text); /* Era #4F4F4F */
+  appearance: none;
+  cursor: pointer;
+  padding-right: 25px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  background-size: 12px 12px; /* Tamanho consistente para a seta */
+   margin-left: 5px; /* Espaço entre o ícone e o select */
+}
+
+.search-bar {
+  position: relative;
+  width: 300px;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background-color: var(--color-input-bg); /* Substitui #f2f2f2 */
+  font-size: 0.85rem;
+  color: var(--color-text); /* Substitui #666 */
+  transition: all 0.3s ease;
+}
+
+.search-bar input[type="text"]:focus {
+  outline: none;
+  background-color: var(--color-input-bg); /* Era #f2f2f2 */
+  color: var(--color-text); /* Era #666 */
+}
+
+.search-bar input::placeholder {
+  color: var(--color-placeholder); /* Era #999 */
+}
+
+.search-bar img.icon-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.6;
+  object-fit: contain;
+}
+
+body[data-theme="dark"] .icon-location,
+body[data-theme="dark"] .icon-search {
+  filter: invert(1);
+  opacity: 0.8;
+}
+
+/* Atualize a cor da seta do dropdown */
+body[data-theme="dark"] .location-wrapper select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23cccccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+body[data-theme="dark"] .main-menu img {
+  filter: invert(1) brightness(2); /* Inverte (preto → branco) e aumenta o brilho */
+}
+
+/* Mantém o estilo circular em telas pequenas (opcional) */
+/*@media (max-width: 768px) {
+  #theme-text {
+    display: none;
+  }
+  #theme-toggle {
+    width: 36px;
+    justify-content: center;
+  }
+}

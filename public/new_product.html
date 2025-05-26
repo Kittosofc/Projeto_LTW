@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DINÂMICO - Sistema de Caixa</title>
+    <link rel="stylesheet" href="CSS/main.css" />
+    <link rel="stylesheet" href="CSS/new_product.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"><br/>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            CAIXA DISPONÍVEL
+        </div>
+        
+        <div class="client-section">
+            <div class="client-info">
+                <span class="client-label">Definir Cliente (F2)</span>
+                <span class="client-status">Sem cliente identificado</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Código do produto..." img src ="IMG/search-icon.png">
+                </div>
+                
+                <div class="quantity-price-container">
+                    <div class="input-group">
+                        <input type="text" class="search-quant" placeholder="Qtd     0" img src ="IMG/search-icon.png">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="search-price" id="price-input" placeholder="€   0,00" required pattern="^\d+([.,]\d{1,2})?$">
+                    </div>
+                </div>
+                
+                <div class="logo-container">
+                    <div class="logo">
+                        <a href="">
+                            <img src="IMG/logo2.png" alt="Logo">
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="shortcuts">
+                    F-16 Emitir Fatura<br>
+                    F-13 Gerar QRcode<br>
+                    F-10 Gerar cód. de barras<br>
+                    F-09 Reconhecimento de cód. de barras<br>
+                    F-08 Inserção de item repetidos
+                </div>
+            </div>
+            
+           <div class="right-section">
+                <!-- Caixa com botões -->
+                <div class="right-panel">
+                    <button class="desconto">Desconto (F6)</button>
+                    <button class="cancelar">Cancelar Item (F5)</button>
+                </div>
+                
+                <!-- Estatísticas abaixo da caixa -->
+                <div class="cart-stats">
+                    <div class="stat-item">
+                        <span>Itens</span>
+                        <span class="total-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Quantidade</span>
+                        <span class="total-value">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Devolução/Desconto</span>
+                        <span class="total-value">€ 0,00</span>
+                    </div>
+                </div>
+                
+                <!-- Botão finalizar abaixo das estatísticas -->
+                <button class="finalize">
+                    <span>Finalizar venda (F3)</span>
+                    <span class="total-value">€ 0,00</span>
+                </button>
+            </div>
+        </div>
+ <div class="bottom-actions">
+            <button class="action-btn">
+                <span>Cancelar operação</span>
+                <span class="shortcut-key">(ESC)</span>
+            </button>
+            <button class="action-btn">
+                <span>Abastecimento</span>
+                <span class="shortcut-key">(F4)</span>
+            </button>
+            <button class="action-btn">
+                <span>Abrir gaveta</span>
+                <span class="shortcut-key">(F8)</span>
+            </button>
+            <button class="action-btn">
+                <span>Devolução</span>
+                <span class="shortcut-key">(F10)</span>
+            </button>
+            <div class="selected-action">
+            <button class="action-btn">
+                <span>Fechar caixa</span>
+                <span class="shortcut-key">(F12)</span>
+            </button>
+            </div>
+        </div>
+    </div>
+    <script src="new_product.js"></script>
+</body>
+</html>
