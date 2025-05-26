@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control_price</title>
+  <link rel="stylesheet" href="CSS/main.css" />
+  <link rel="stylesheet" href="CSS/home_adm.css" />
+  <link rel="stylesheet" href="CSS/control_price.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body data-theme="light">
+
+  <aside class="sidebar">
+    <div class="user-info">
+      <img src="IMG/me.jpg" alt="Avatar" class="avatar">
+      <span class="username">Matheus</span>
+    </div>
+    <nav>
+      <ul class="main-menu">
+        <li class="has-submenu">
+          <a href="#">
+            <svg class ="-icon" width="16" height="18" viewBox="0 0 16 18" fill="currentColor">
+              <path d="..." />
+            </svg>
+            <span>Geral</span>
+          </a>
+          <ul class="sub-menu">
+            <li>Relatórios</li>
+            <li>Andrew Gay</li>
+            <li>Not ur Concern</li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a href="#" class="active">
+            <img src="IMG/user.png" alt="User Icon">
+            <span>Utilizadores</span>
+          </a>
+          <ul class="sub-menu">
+            <li class="selected-subitem">
+              <img src="IMG/icon_UtilizadorP.png" alt="Ícone Funcionários" class="icon-submenu">
+              Funcionários
+            </li>
+            <li>
+              <img src="IMG/icon_Utilizadorp.png" alt="Ícone Clientes" class="icon-submenu">
+              Clientes
+            </li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <a href="#">
+            <img src="IMG/permissions.png" alt="Permission icon">
+            <span>Permissões</span>
+          </a>
+          <ul class="sub-menu">
+            <li>Atribuir permissões</li>
+            <li>Alterar permissões</li>
+            <li>Remover permissões</li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="/sair.html">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
+              <path d="..." />
+            </svg>          
+            <span>Sair</span>
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <button id="theme-toggle" aria-label="Alternar tema">🌙</button>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Substitua esta parte no seu <main> -->
+<main class="main">
+  <section class="precos-container">
+    <div class="preco-item">
+      <h3>Gasolina</h3>
+      <p>Preço da gasolina.</p>
+      <div class="preco-input">
+        <span class="simbolo">e</span>
+        <input type="text" placeholder="Insira o valor">
+      </div>
+      <button class="btn-atualizar">Salvar preço</button>
+    </div>
+
+    <div class="preco-item">
+      <h3>Gasolina aditivada</h3>
+      <p>Gasolina a adicionar</p>
+      <div class="preco-input">
+        <span class="simbolo">€</span>
+        <input type="text" placeholder="Insira o valor">
+      </div>
+      <button class="btn-atualizar">Salvar preço</button>
+    </div>
+
+    <div class="preco-item">
+      <h3>Ethanol</h3>
+      <p>Ethanol a adicionar</p>
+      <div class="preco-input">
+        <span class="simbolo">€</span>
+        <input type="text" placeholder="Insira o valor">
+      </div>
+      <button class="btn-atualizar">Salvar preço</button>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
