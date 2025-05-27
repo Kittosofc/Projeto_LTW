@@ -7,16 +7,20 @@
     <link rel="stylesheet" href="CSS/main.css">
     <link rel="stylesheet" href="CSS/dashboard.css">
 </head>
+
 <body>
     <header>
         <div class="user-info">
-          <img src="IMG/ney.jpg" alt="Avatar do usuário" class="avatar">
-          <span>Neymar Jr.</span>
+          <!-- Aquí pondremos la foto y nombre dinámicos -->
+          <img src="IMG/default.jpg" alt="Avatar do usuário" class="avatar" id="user-avatar" />
+          <span id="user-name">Carregando...</span>
         </div>
         <nav class="menu">
           <a href="dashboard.html">Home</a>
           <a href="settings.html">Settings</a>
           <a href="mapa.html">Mapa de postos</a>
+          <!-- Botón logout -->
+          <button id="logout-btn" style="margin-left:20px;">Logout</button>
         </nav>
       </header>
     
@@ -27,7 +31,7 @@
               <img src="IMG/logo.png" alt="Logo" class="logo-mini">
               <span>Seus pontos <span class="info">ℹ️</span></span>
             </div>
-            <h1>1,912 Pontos</h1>
+            <h1 id="user-points">Carregando...</h1>
           </div>
     
           <div class="reward-box">
@@ -67,52 +71,133 @@
           
         </section>
     
-        <aside class="transactions">
-            <h4>Hoje</h4>
-            <div class="txn-row">
-              <div class="txn-icon">🛍</div>
-              <div class="txn-info">
-                <div class="item">Sprite 2L</div>
-                <small>R$ 6,78</small>
-              </div>
-              <div class="txn-points">+ 6 Pts</div>
-            </div>
-            <div class="txn-row">
-              <div class="txn-icon">⛽</div>
-              <div class="txn-info">
-                <div class="item">Abastecimento</div>
-                <small>R$ 89,24</small>
-              </div>
-              <div class="txn-points">+ 89 Pts</div>
-            </div>
-          
-            <h4>Ontem</h4>
-            <div class="txn-row">
-              <div class="txn-icon">⛽</div>
-              <div class="txn-info">
-                <div class="item">Abastecimento</div>
-                <small>R$ 86,52</small>
-              </div>
-              <div class="txn-points">+ 86 Pts</div>
-            </div>
-            <div class="txn-row">
-              <div class="txn-icon">🍫</div>
-              <div class="txn-info">
-                <div class="item">Chocolate</div>
-                <small>R$ 11,78</small>
-              </div>
-              <div class="txn-points">+ 11 Pts</div>
-            </div>
-            <div class="txn-row">
-              <div class="txn-icon">🍺</div>
-              <div class="txn-info">
-                <div class="item">Cerveja Brahma</div>
-                <small>R$ 3,18</small>
-              </div>
-              <div class="txn-points">+ 3 Pts</div>
-            </div>
-          </aside>
-          
+        <aside class="transactions" id="transactions">
+          <!-- Aquí se insertarán los datos -->
+        </aside>
+          <script>
+  // Función para obtener el icono según el producto (puedes ajustar)
+  function getIcon(productName) {
+    if (productName.toLowerCase().includes('gasolina') || productName.toLowerCase().includes('abastecimento')) return '⛽';
+    if (productName.toLowerCase().includes('sprite')) return '🛍';
+    if (productName.toLowerCase().includes('chocolate')) return '🍫';
+    if (productName.toLowerCase().includes('cerveja')) return '🍺';
+    // Icono por defecto
+    return '🛒';
+  }
+
+  // Función para formatear fecha a algo simple tipo "Hoy", "Ayer" o fecha corta
+  function formatDate(dateStr) {
+    const fecha = new Date(dateStr);
+    const hoy = new Date();
+    const ayer = new Date();
+    ayer.setDate(hoy.getDate() - 1);
+
+    if (fecha.toDateString() === hoy.toDateString()) return 'Hoy';
+    if (fecha.toDateString() === ayer.toDateString()) return 'Ayer';
+
+    // Si quieres, puedes devolver solo el día-mes
+    return fecha.toLocaleDateString();
+  }
+
+  // Función para mostrar el historial
+  async function cargarHistorial() {
+    const container = document.getElementById('transactions');
+    container.innerHTML = ''; // limpiar
+
+    try {
+      const response = await fetch('/api/historial-pontos');
+      if (!response.ok) throw new Error('Error al obtener historial');
+
+      const datos = await response.json();
+
+      // Agrupar por fecha (Hoy, Ayer, otras fechas)
+      const agrupados = {};
+
+      datos.forEach(item => {
+        const fechaFormateada = formatDate(item.fecha_venta);
+        if (!agrupados[fechaFormateada]) agrupados[fechaFormateada] = [];
+        agrupados[fechaFormateada].push(item);
+      });
+
+      // Generar HTML
+      for (const fecha in agrupados) {
+        const h4 = document.createElement('h4');
+        h4.textContent = fecha;
+        container.appendChild(h4);
+
+        agrupados[fecha].forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'txn-row';
+
+          const iconDiv = document.createElement('div');
+          iconDiv.className = 'txn-icon';
+          iconDiv.textContent = getIcon(item.nombre_producto);
+
+          const infoDiv = document.createElement('div');
+          infoDiv.className = 'txn-info';
+
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'item';
+          itemDiv.textContent = item.nombre_producto;
+
+          const priceSmall = document.createElement('small');
+          const precio = Number(item.precio) || 0;
+          priceSmall.textContent = `R$ ${precio.toFixed(2)}`;
+
+
+          infoDiv.appendChild(itemDiv);
+          infoDiv.appendChild(priceSmall);
+
+          const pointsDiv = document.createElement('div');
+          pointsDiv.className = 'txn-points';
+          pointsDiv.textContent = `+ ${item.puntos_otorgados} Pts`;
+
+          row.appendChild(iconDiv);
+          row.appendChild(infoDiv);
+          row.appendChild(pointsDiv);
+
+          container.appendChild(row);
+        });
+      }
+
+    } catch (error) {
+      console.error(error);
+      container.textContent = 'Error al cargar historial.';
+    }
+  }
+
+  // Cargar historial cuando la página esté lista
+  window.addEventListener('DOMContentLoaded', cargarHistorial);
+  
+</script>
       </main>
 </body>
+<script>
+    // Cuando cargue la página, pedimos info al backend
+    fetch('/api/usuario')
+      .then(res => {
+        if (!res.ok) throw new Error('No autenticado');
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById('user-name').textContent = data.nome;
+        document.getElementById('user-avatar').src = 'IMG/' + data.foto;
+        document.getElementById('user-points').textContent = data.pontos + ' Pontos';
+      })
+      .catch(err => {
+        alert('Você não está autenticado. Por favor, faça login.');
+        window.location.href = '/login.html'; // Redirigir a login
+      });
+
+    // Funcionalidad para logout
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      fetch('/logout')
+        .then(() => {
+          window.location.href = '/login.html'; // Redirige al login tras cerrar sesión
+        })
+        .catch(() => {
+          alert('Erro ao sair. Tente novamente.');
+        });
+    });
+  </script>
 </html>
