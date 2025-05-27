@@ -1,0 +1,758 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    A
+    AND
+    BATCH
+    COMMA
+    COMMENT
+    CONSULTA
+    DEF
+    DISPONIBILIDADE
+    DOMINGO
+    DOT
+    DOUBLE_EQUALS
+    DURATION
+    ELSE
+    EQUALS
+    FERIAS
+    GREATER_EQUAL
+    GREATER_THAN
+    HYPHEN
+    IF
+    INDISPONIBILIDADE
+    LBRACKET
+    LESS_EQUAL
+    LESS_THAN
+    LPAREN
+    MANHA
+    MINUS
+    NOITE
+    NOT_EQUALS
+    OR
+    PLUS
+    QUARTA
+    QUINTA
+    RBRACKET
+    RPAREN
+    SABADO
+    SEGUNDA
+    SEMICOLON
+    SEXTA
+    TARDE
+    TERCA
+    TIPO
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> comandos
+Rule 2     comandos -> comando
+Rule 3     comandos -> comandos comando
+Rule 4     comando -> AGENDAR COLON propriedades
+Rule 5     propriedades -> propriedade
+Rule 6     propriedades -> propriedades propriedade
+Rule 7     propriedade -> chave COLON valor
+Rule 8     chave -> ID
+Rule 9     chave -> SERVICO
+Rule 10    chave -> CLIENTE
+Rule 11    chave -> DATA
+Rule 12    chave -> PRIORIDADE
+Rule 13    chave -> MOTIVO
+Rule 14    chave -> DURACAO
+Rule 15    chave -> DIAS
+Rule 16    chave -> HORAS
+Rule 17    chave -> FUNCIONARIO
+Rule 18    chave -> FUNCIONARIOS
+Rule 19    chave -> PERIODO
+Rule 20    chave -> FILTRO
+Rule 21    chave -> TURNO
+Rule 22    chave -> PARA
+Rule 23    chave -> DE
+Rule 24    chave -> CONCLUIDO
+Rule 25    chave -> EM
+Rule 26    valor -> STRING
+Rule 27    valor -> NUMBER
+Rule 28    valor -> DATE
+Rule 29    valor -> TIME
+Rule 30    valor -> ID
+Rule 31    valor -> ALTA
+Rule 32    valor -> MEDIA
+Rule 33    valor -> BAIXA
+
+Terminals, with rules where they appear
+
+A                    : 
+AGENDAR              : 4
+ALTA                 : 31
+AND                  : 
+BAIXA                : 33
+BATCH                : 
+CLIENTE              : 10
+COLON                : 4 7
+COMMA                : 
+COMMENT              : 
+CONCLUIDO            : 24
+CONSULTA             : 
+DATA                 : 11
+DATE                 : 28
+DE                   : 23
+DEF                  : 
+DIAS                 : 15
+DISPONIBILIDADE      : 
+DOMINGO              : 
+DOT                  : 
+DOUBLE_EQUALS        : 
+DURACAO              : 14
+DURATION             : 
+ELSE                 : 
+EM                   : 25
+EQUALS               : 
+FERIAS               : 
+FILTRO               : 20
+FUNCIONARIO          : 17
+FUNCIONARIOS         : 18
+GREATER_EQUAL        : 
+GREATER_THAN         : 
+HORAS                : 16
+HYPHEN               : 
+ID                   : 8 30
+IF                   : 
+INDISPONIBILIDADE    : 
+LBRACKET             : 
+LESS_EQUAL           : 
+LESS_THAN            : 
+LPAREN               : 
+MANHA                : 
+MEDIA                : 32
+MINUS                : 
+MOTIVO               : 13
+NOITE                : 
+NOT_EQUALS           : 
+NUMBER               : 27
+OR                   : 
+PARA                 : 22
+PERIODO              : 19
+PLUS                 : 
+PRIORIDADE           : 12
+QUARTA               : 
+QUINTA               : 
+RBRACKET             : 
+RPAREN               : 
+SABADO               : 
+SEGUNDA              : 
+SEMICOLON            : 
+SERVICO              : 9
+SEXTA                : 
+STRING               : 26
+TARDE                : 
+TERCA                : 
+TIME                 : 29
+TIPO                 : 
+TURNO                : 21
+error                : 
+
+Nonterminals, with rules where they appear
+
+chave                : 7
+comando              : 2 3
+comandos             : 1 3
+program              : 0
+propriedade          : 5 6
+propriedades         : 4 6
+valor                : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . comandos
+    (2) comandos -> . comando
+    (3) comandos -> . comandos comando
+    (4) comando -> . AGENDAR COLON propriedades
+
+    AGENDAR         shift and go to state 4
+
+    program                        shift and go to state 1
+    comandos                       shift and go to state 2
+    comando                        shift and go to state 3
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> comandos .
+    (3) comandos -> comandos . comando
+    (4) comando -> . AGENDAR COLON propriedades
+
+    $end            reduce using rule 1 (program -> comandos .)
+    AGENDAR         shift and go to state 4
+
+    comando                        shift and go to state 5
+
+state 3
+
+    (2) comandos -> comando .
+
+    AGENDAR         reduce using rule 2 (comandos -> comando .)
+    $end            reduce using rule 2 (comandos -> comando .)
+
+
+state 4
+
+    (4) comando -> AGENDAR . COLON propriedades
+
+    COLON           shift and go to state 6
+
+
+state 5
+
+    (3) comandos -> comandos comando .
+
+    AGENDAR         reduce using rule 3 (comandos -> comandos comando .)
+    $end            reduce using rule 3 (comandos -> comandos comando .)
+
+
+state 6
+
+    (4) comando -> AGENDAR COLON . propriedades
+    (5) propriedades -> . propriedade
+    (6) propriedades -> . propriedades propriedade
+    (7) propriedade -> . chave COLON valor
+    (8) chave -> . ID
+    (9) chave -> . SERVICO
+    (10) chave -> . CLIENTE
+    (11) chave -> . DATA
+    (12) chave -> . PRIORIDADE
+    (13) chave -> . MOTIVO
+    (14) chave -> . DURACAO
+    (15) chave -> . DIAS
+    (16) chave -> . HORAS
+    (17) chave -> . FUNCIONARIO
+    (18) chave -> . FUNCIONARIOS
+    (19) chave -> . PERIODO
+    (20) chave -> . FILTRO
+    (21) chave -> . TURNO
+    (22) chave -> . PARA
+    (23) chave -> . DE
+    (24) chave -> . CONCLUIDO
+    (25) chave -> . EM
+
+    ID              shift and go to state 10
+    SERVICO         shift and go to state 11
+    CLIENTE         shift and go to state 12
+    DATA            shift and go to state 13
+    PRIORIDADE      shift and go to state 14
+    MOTIVO          shift and go to state 15
+    DURACAO         shift and go to state 16
+    DIAS            shift and go to state 17
+    HORAS           shift and go to state 18
+    FUNCIONARIO     shift and go to state 19
+    FUNCIONARIOS    shift and go to state 20
+    PERIODO         shift and go to state 21
+    FILTRO          shift and go to state 22
+    TURNO           shift and go to state 23
+    PARA            shift and go to state 24
+    DE              shift and go to state 25
+    CONCLUIDO       shift and go to state 26
+    EM              shift and go to state 27
+
+    propriedades                   shift and go to state 7
+    propriedade                    shift and go to state 8
+    chave                          shift and go to state 9
+
+state 7
+
+    (4) comando -> AGENDAR COLON propriedades .
+    (6) propriedades -> propriedades . propriedade
+    (7) propriedade -> . chave COLON valor
+    (8) chave -> . ID
+    (9) chave -> . SERVICO
+    (10) chave -> . CLIENTE
+    (11) chave -> . DATA
+    (12) chave -> . PRIORIDADE
+    (13) chave -> . MOTIVO
+    (14) chave -> . DURACAO
+    (15) chave -> . DIAS
+    (16) chave -> . HORAS
+    (17) chave -> . FUNCIONARIO
+    (18) chave -> . FUNCIONARIOS
+    (19) chave -> . PERIODO
+    (20) chave -> . FILTRO
+    (21) chave -> . TURNO
+    (22) chave -> . PARA
+    (23) chave -> . DE
+    (24) chave -> . CONCLUIDO
+    (25) chave -> . EM
+
+    AGENDAR         reduce using rule 4 (comando -> AGENDAR COLON propriedades .)
+    $end            reduce using rule 4 (comando -> AGENDAR COLON propriedades .)
+    ID              shift and go to state 10
+    SERVICO         shift and go to state 11
+    CLIENTE         shift and go to state 12
+    DATA            shift and go to state 13
+    PRIORIDADE      shift and go to state 14
+    MOTIVO          shift and go to state 15
+    DURACAO         shift and go to state 16
+    DIAS            shift and go to state 17
+    HORAS           shift and go to state 18
+    FUNCIONARIO     shift and go to state 19
+    FUNCIONARIOS    shift and go to state 20
+    PERIODO         shift and go to state 21
+    FILTRO          shift and go to state 22
+    TURNO           shift and go to state 23
+    PARA            shift and go to state 24
+    DE              shift and go to state 25
+    CONCLUIDO       shift and go to state 26
+    EM              shift and go to state 27
+
+    propriedade                    shift and go to state 28
+    chave                          shift and go to state 9
+
+state 8
+
+    (5) propriedades -> propriedade .
+
+    ID              reduce using rule 5 (propriedades -> propriedade .)
+    SERVICO         reduce using rule 5 (propriedades -> propriedade .)
+    CLIENTE         reduce using rule 5 (propriedades -> propriedade .)
+    DATA            reduce using rule 5 (propriedades -> propriedade .)
+    PRIORIDADE      reduce using rule 5 (propriedades -> propriedade .)
+    MOTIVO          reduce using rule 5 (propriedades -> propriedade .)
+    DURACAO         reduce using rule 5 (propriedades -> propriedade .)
+    DIAS            reduce using rule 5 (propriedades -> propriedade .)
+    HORAS           reduce using rule 5 (propriedades -> propriedade .)
+    FUNCIONARIO     reduce using rule 5 (propriedades -> propriedade .)
+    FUNCIONARIOS    reduce using rule 5 (propriedades -> propriedade .)
+    PERIODO         reduce using rule 5 (propriedades -> propriedade .)
+    FILTRO          reduce using rule 5 (propriedades -> propriedade .)
+    TURNO           reduce using rule 5 (propriedades -> propriedade .)
+    PARA            reduce using rule 5 (propriedades -> propriedade .)
+    DE              reduce using rule 5 (propriedades -> propriedade .)
+    CONCLUIDO       reduce using rule 5 (propriedades -> propriedade .)
+    EM              reduce using rule 5 (propriedades -> propriedade .)
+    AGENDAR         reduce using rule 5 (propriedades -> propriedade .)
+    $end            reduce using rule 5 (propriedades -> propriedade .)
+
+
+state 9
+
+    (7) propriedade -> chave . COLON valor
+
+    COLON           shift and go to state 29
+
+
+state 10
+
+    (8) chave -> ID .
+
+    COLON           reduce using rule 8 (chave -> ID .)
+
+
+state 11
+
+    (9) chave -> SERVICO .
+
+    COLON           reduce using rule 9 (chave -> SERVICO .)
+
+
+state 12
+
+    (10) chave -> CLIENTE .
+
+    COLON           reduce using rule 10 (chave -> CLIENTE .)
+
+
+state 13
+
+    (11) chave -> DATA .
+
+    COLON           reduce using rule 11 (chave -> DATA .)
+
+
+state 14
+
+    (12) chave -> PRIORIDADE .
+
+    COLON           reduce using rule 12 (chave -> PRIORIDADE .)
+
+
+state 15
+
+    (13) chave -> MOTIVO .
+
+    COLON           reduce using rule 13 (chave -> MOTIVO .)
+
+
+state 16
+
+    (14) chave -> DURACAO .
+
+    COLON           reduce using rule 14 (chave -> DURACAO .)
+
+
+state 17
+
+    (15) chave -> DIAS .
+
+    COLON           reduce using rule 15 (chave -> DIAS .)
+
+
+state 18
+
+    (16) chave -> HORAS .
+
+    COLON           reduce using rule 16 (chave -> HORAS .)
+
+
+state 19
+
+    (17) chave -> FUNCIONARIO .
+
+    COLON           reduce using rule 17 (chave -> FUNCIONARIO .)
+
+
+state 20
+
+    (18) chave -> FUNCIONARIOS .
+
+    COLON           reduce using rule 18 (chave -> FUNCIONARIOS .)
+
+
+state 21
+
+    (19) chave -> PERIODO .
+
+    COLON           reduce using rule 19 (chave -> PERIODO .)
+
+
+state 22
+
+    (20) chave -> FILTRO .
+
+    COLON           reduce using rule 20 (chave -> FILTRO .)
+
+
+state 23
+
+    (21) chave -> TURNO .
+
+    COLON           reduce using rule 21 (chave -> TURNO .)
+
+
+state 24
+
+    (22) chave -> PARA .
+
+    COLON           reduce using rule 22 (chave -> PARA .)
+
+
+state 25
+
+    (23) chave -> DE .
+
+    COLON           reduce using rule 23 (chave -> DE .)
+
+
+state 26
+
+    (24) chave -> CONCLUIDO .
+
+    COLON           reduce using rule 24 (chave -> CONCLUIDO .)
+
+
+state 27
+
+    (25) chave -> EM .
+
+    COLON           reduce using rule 25 (chave -> EM .)
+
+
+state 28
+
+    (6) propriedades -> propriedades propriedade .
+
+    ID              reduce using rule 6 (propriedades -> propriedades propriedade .)
+    SERVICO         reduce using rule 6 (propriedades -> propriedades propriedade .)
+    CLIENTE         reduce using rule 6 (propriedades -> propriedades propriedade .)
+    DATA            reduce using rule 6 (propriedades -> propriedades propriedade .)
+    PRIORIDADE      reduce using rule 6 (propriedades -> propriedades propriedade .)
+    MOTIVO          reduce using rule 6 (propriedades -> propriedades propriedade .)
+    DURACAO         reduce using rule 6 (propriedades -> propriedades propriedade .)
+    DIAS            reduce using rule 6 (propriedades -> propriedades propriedade .)
+    HORAS           reduce using rule 6 (propriedades -> propriedades propriedade .)
+    FUNCIONARIO     reduce using rule 6 (propriedades -> propriedades propriedade .)
+    FUNCIONARIOS    reduce using rule 6 (propriedades -> propriedades propriedade .)
+    PERIODO         reduce using rule 6 (propriedades -> propriedades propriedade .)
+    FILTRO          reduce using rule 6 (propriedades -> propriedades propriedade .)
+    TURNO           reduce using rule 6 (propriedades -> propriedades propriedade .)
+    PARA            reduce using rule 6 (propriedades -> propriedades propriedade .)
+    DE              reduce using rule 6 (propriedades -> propriedades propriedade .)
+    CONCLUIDO       reduce using rule 6 (propriedades -> propriedades propriedade .)
+    EM              reduce using rule 6 (propriedades -> propriedades propriedade .)
+    AGENDAR         reduce using rule 6 (propriedades -> propriedades propriedade .)
+    $end            reduce using rule 6 (propriedades -> propriedades propriedade .)
+
+
+state 29
+
+    (7) propriedade -> chave COLON . valor
+    (26) valor -> . STRING
+    (27) valor -> . NUMBER
+    (28) valor -> . DATE
+    (29) valor -> . TIME
+    (30) valor -> . ID
+    (31) valor -> . ALTA
+    (32) valor -> . MEDIA
+    (33) valor -> . BAIXA
+
+    STRING          shift and go to state 31
+    NUMBER          shift and go to state 32
+    DATE            shift and go to state 33
+    TIME            shift and go to state 34
+    ID              shift and go to state 35
+    ALTA            shift and go to state 36
+    MEDIA           shift and go to state 37
+    BAIXA           shift and go to state 38
+
+    valor                          shift and go to state 30
+
+state 30
+
+    (7) propriedade -> chave COLON valor .
+
+    ID              reduce using rule 7 (propriedade -> chave COLON valor .)
+    SERVICO         reduce using rule 7 (propriedade -> chave COLON valor .)
+    CLIENTE         reduce using rule 7 (propriedade -> chave COLON valor .)
+    DATA            reduce using rule 7 (propriedade -> chave COLON valor .)
+    PRIORIDADE      reduce using rule 7 (propriedade -> chave COLON valor .)
+    MOTIVO          reduce using rule 7 (propriedade -> chave COLON valor .)
+    DURACAO         reduce using rule 7 (propriedade -> chave COLON valor .)
+    DIAS            reduce using rule 7 (propriedade -> chave COLON valor .)
+    HORAS           reduce using rule 7 (propriedade -> chave COLON valor .)
+    FUNCIONARIO     reduce using rule 7 (propriedade -> chave COLON valor .)
+    FUNCIONARIOS    reduce using rule 7 (propriedade -> chave COLON valor .)
+    PERIODO         reduce using rule 7 (propriedade -> chave COLON valor .)
+    FILTRO          reduce using rule 7 (propriedade -> chave COLON valor .)
+    TURNO           reduce using rule 7 (propriedade -> chave COLON valor .)
+    PARA            reduce using rule 7 (propriedade -> chave COLON valor .)
+    DE              reduce using rule 7 (propriedade -> chave COLON valor .)
+    CONCLUIDO       reduce using rule 7 (propriedade -> chave COLON valor .)
+    EM              reduce using rule 7 (propriedade -> chave COLON valor .)
+    AGENDAR         reduce using rule 7 (propriedade -> chave COLON valor .)
+    $end            reduce using rule 7 (propriedade -> chave COLON valor .)
+
+
+state 31
+
+    (26) valor -> STRING .
+
+    ID              reduce using rule 26 (valor -> STRING .)
+    SERVICO         reduce using rule 26 (valor -> STRING .)
+    CLIENTE         reduce using rule 26 (valor -> STRING .)
+    DATA            reduce using rule 26 (valor -> STRING .)
+    PRIORIDADE      reduce using rule 26 (valor -> STRING .)
+    MOTIVO          reduce using rule 26 (valor -> STRING .)
+    DURACAO         reduce using rule 26 (valor -> STRING .)
+    DIAS            reduce using rule 26 (valor -> STRING .)
+    HORAS           reduce using rule 26 (valor -> STRING .)
+    FUNCIONARIO     reduce using rule 26 (valor -> STRING .)
+    FUNCIONARIOS    reduce using rule 26 (valor -> STRING .)
+    PERIODO         reduce using rule 26 (valor -> STRING .)
+    FILTRO          reduce using rule 26 (valor -> STRING .)
+    TURNO           reduce using rule 26 (valor -> STRING .)
+    PARA            reduce using rule 26 (valor -> STRING .)
+    DE              reduce using rule 26 (valor -> STRING .)
+    CONCLUIDO       reduce using rule 26 (valor -> STRING .)
+    EM              reduce using rule 26 (valor -> STRING .)
+    AGENDAR         reduce using rule 26 (valor -> STRING .)
+    $end            reduce using rule 26 (valor -> STRING .)
+
+
+state 32
+
+    (27) valor -> NUMBER .
+
+    ID              reduce using rule 27 (valor -> NUMBER .)
+    SERVICO         reduce using rule 27 (valor -> NUMBER .)
+    CLIENTE         reduce using rule 27 (valor -> NUMBER .)
+    DATA            reduce using rule 27 (valor -> NUMBER .)
+    PRIORIDADE      reduce using rule 27 (valor -> NUMBER .)
+    MOTIVO          reduce using rule 27 (valor -> NUMBER .)
+    DURACAO         reduce using rule 27 (valor -> NUMBER .)
+    DIAS            reduce using rule 27 (valor -> NUMBER .)
+    HORAS           reduce using rule 27 (valor -> NUMBER .)
+    FUNCIONARIO     reduce using rule 27 (valor -> NUMBER .)
+    FUNCIONARIOS    reduce using rule 27 (valor -> NUMBER .)
+    PERIODO         reduce using rule 27 (valor -> NUMBER .)
+    FILTRO          reduce using rule 27 (valor -> NUMBER .)
+    TURNO           reduce using rule 27 (valor -> NUMBER .)
+    PARA            reduce using rule 27 (valor -> NUMBER .)
+    DE              reduce using rule 27 (valor -> NUMBER .)
+    CONCLUIDO       reduce using rule 27 (valor -> NUMBER .)
+    EM              reduce using rule 27 (valor -> NUMBER .)
+    AGENDAR         reduce using rule 27 (valor -> NUMBER .)
+    $end            reduce using rule 27 (valor -> NUMBER .)
+
+
+state 33
+
+    (28) valor -> DATE .
+
+    ID              reduce using rule 28 (valor -> DATE .)
+    SERVICO         reduce using rule 28 (valor -> DATE .)
+    CLIENTE         reduce using rule 28 (valor -> DATE .)
+    DATA            reduce using rule 28 (valor -> DATE .)
+    PRIORIDADE      reduce using rule 28 (valor -> DATE .)
+    MOTIVO          reduce using rule 28 (valor -> DATE .)
+    DURACAO         reduce using rule 28 (valor -> DATE .)
+    DIAS            reduce using rule 28 (valor -> DATE .)
+    HORAS           reduce using rule 28 (valor -> DATE .)
+    FUNCIONARIO     reduce using rule 28 (valor -> DATE .)
+    FUNCIONARIOS    reduce using rule 28 (valor -> DATE .)
+    PERIODO         reduce using rule 28 (valor -> DATE .)
+    FILTRO          reduce using rule 28 (valor -> DATE .)
+    TURNO           reduce using rule 28 (valor -> DATE .)
+    PARA            reduce using rule 28 (valor -> DATE .)
+    DE              reduce using rule 28 (valor -> DATE .)
+    CONCLUIDO       reduce using rule 28 (valor -> DATE .)
+    EM              reduce using rule 28 (valor -> DATE .)
+    AGENDAR         reduce using rule 28 (valor -> DATE .)
+    $end            reduce using rule 28 (valor -> DATE .)
+
+
+state 34
+
+    (29) valor -> TIME .
+
+    ID              reduce using rule 29 (valor -> TIME .)
+    SERVICO         reduce using rule 29 (valor -> TIME .)
+    CLIENTE         reduce using rule 29 (valor -> TIME .)
+    DATA            reduce using rule 29 (valor -> TIME .)
+    PRIORIDADE      reduce using rule 29 (valor -> TIME .)
+    MOTIVO          reduce using rule 29 (valor -> TIME .)
+    DURACAO         reduce using rule 29 (valor -> TIME .)
+    DIAS            reduce using rule 29 (valor -> TIME .)
+    HORAS           reduce using rule 29 (valor -> TIME .)
+    FUNCIONARIO     reduce using rule 29 (valor -> TIME .)
+    FUNCIONARIOS    reduce using rule 29 (valor -> TIME .)
+    PERIODO         reduce using rule 29 (valor -> TIME .)
+    FILTRO          reduce using rule 29 (valor -> TIME .)
+    TURNO           reduce using rule 29 (valor -> TIME .)
+    PARA            reduce using rule 29 (valor -> TIME .)
+    DE              reduce using rule 29 (valor -> TIME .)
+    CONCLUIDO       reduce using rule 29 (valor -> TIME .)
+    EM              reduce using rule 29 (valor -> TIME .)
+    AGENDAR         reduce using rule 29 (valor -> TIME .)
+    $end            reduce using rule 29 (valor -> TIME .)
+
+
+state 35
+
+    (30) valor -> ID .
+
+    ID              reduce using rule 30 (valor -> ID .)
+    SERVICO         reduce using rule 30 (valor -> ID .)
+    CLIENTE         reduce using rule 30 (valor -> ID .)
+    DATA            reduce using rule 30 (valor -> ID .)
+    PRIORIDADE      reduce using rule 30 (valor -> ID .)
+    MOTIVO          reduce using rule 30 (valor -> ID .)
+    DURACAO         reduce using rule 30 (valor -> ID .)
+    DIAS            reduce using rule 30 (valor -> ID .)
+    HORAS           reduce using rule 30 (valor -> ID .)
+    FUNCIONARIO     reduce using rule 30 (valor -> ID .)
+    FUNCIONARIOS    reduce using rule 30 (valor -> ID .)
+    PERIODO         reduce using rule 30 (valor -> ID .)
+    FILTRO          reduce using rule 30 (valor -> ID .)
+    TURNO           reduce using rule 30 (valor -> ID .)
+    PARA            reduce using rule 30 (valor -> ID .)
+    DE              reduce using rule 30 (valor -> ID .)
+    CONCLUIDO       reduce using rule 30 (valor -> ID .)
+    EM              reduce using rule 30 (valor -> ID .)
+    AGENDAR         reduce using rule 30 (valor -> ID .)
+    $end            reduce using rule 30 (valor -> ID .)
+
+
+state 36
+
+    (31) valor -> ALTA .
+
+    ID              reduce using rule 31 (valor -> ALTA .)
+    SERVICO         reduce using rule 31 (valor -> ALTA .)
+    CLIENTE         reduce using rule 31 (valor -> ALTA .)
+    DATA            reduce using rule 31 (valor -> ALTA .)
+    PRIORIDADE      reduce using rule 31 (valor -> ALTA .)
+    MOTIVO          reduce using rule 31 (valor -> ALTA .)
+    DURACAO         reduce using rule 31 (valor -> ALTA .)
+    DIAS            reduce using rule 31 (valor -> ALTA .)
+    HORAS           reduce using rule 31 (valor -> ALTA .)
+    FUNCIONARIO     reduce using rule 31 (valor -> ALTA .)
+    FUNCIONARIOS    reduce using rule 31 (valor -> ALTA .)
+    PERIODO         reduce using rule 31 (valor -> ALTA .)
+    FILTRO          reduce using rule 31 (valor -> ALTA .)
+    TURNO           reduce using rule 31 (valor -> ALTA .)
+    PARA            reduce using rule 31 (valor -> ALTA .)
+    DE              reduce using rule 31 (valor -> ALTA .)
+    CONCLUIDO       reduce using rule 31 (valor -> ALTA .)
+    EM              reduce using rule 31 (valor -> ALTA .)
+    AGENDAR         reduce using rule 31 (valor -> ALTA .)
+    $end            reduce using rule 31 (valor -> ALTA .)
+
+
+state 37
+
+    (32) valor -> MEDIA .
+
+    ID              reduce using rule 32 (valor -> MEDIA .)
+    SERVICO         reduce using rule 32 (valor -> MEDIA .)
+    CLIENTE         reduce using rule 32 (valor -> MEDIA .)
+    DATA            reduce using rule 32 (valor -> MEDIA .)
+    PRIORIDADE      reduce using rule 32 (valor -> MEDIA .)
+    MOTIVO          reduce using rule 32 (valor -> MEDIA .)
+    DURACAO         reduce using rule 32 (valor -> MEDIA .)
+    DIAS            reduce using rule 32 (valor -> MEDIA .)
+    HORAS           reduce using rule 32 (valor -> MEDIA .)
+    FUNCIONARIO     reduce using rule 32 (valor -> MEDIA .)
+    FUNCIONARIOS    reduce using rule 32 (valor -> MEDIA .)
+    PERIODO         reduce using rule 32 (valor -> MEDIA .)
+    FILTRO          reduce using rule 32 (valor -> MEDIA .)
+    TURNO           reduce using rule 32 (valor -> MEDIA .)
+    PARA            reduce using rule 32 (valor -> MEDIA .)
+    DE              reduce using rule 32 (valor -> MEDIA .)
+    CONCLUIDO       reduce using rule 32 (valor -> MEDIA .)
+    EM              reduce using rule 32 (valor -> MEDIA .)
+    AGENDAR         reduce using rule 32 (valor -> MEDIA .)
+    $end            reduce using rule 32 (valor -> MEDIA .)
+
+
+state 38
+
+    (33) valor -> BAIXA .
+
+    ID              reduce using rule 33 (valor -> BAIXA .)
+    SERVICO         reduce using rule 33 (valor -> BAIXA .)
+    CLIENTE         reduce using rule 33 (valor -> BAIXA .)
+    DATA            reduce using rule 33 (valor -> BAIXA .)
+    PRIORIDADE      reduce using rule 33 (valor -> BAIXA .)
+    MOTIVO          reduce using rule 33 (valor -> BAIXA .)
+    DURACAO         reduce using rule 33 (valor -> BAIXA .)
+    DIAS            reduce using rule 33 (valor -> BAIXA .)
+    HORAS           reduce using rule 33 (valor -> BAIXA .)
+    FUNCIONARIO     reduce using rule 33 (valor -> BAIXA .)
+    FUNCIONARIOS    reduce using rule 33 (valor -> BAIXA .)
+    PERIODO         reduce using rule 33 (valor -> BAIXA .)
+    FILTRO          reduce using rule 33 (valor -> BAIXA .)
+    TURNO           reduce using rule 33 (valor -> BAIXA .)
+    PARA            reduce using rule 33 (valor -> BAIXA .)
+    DE              reduce using rule 33 (valor -> BAIXA .)
+    CONCLUIDO       reduce using rule 33 (valor -> BAIXA .)
+    EM              reduce using rule 33 (valor -> BAIXA .)
+    AGENDAR         reduce using rule 33 (valor -> BAIXA .)
+    $end            reduce using rule 33 (valor -> BAIXA .)
+
