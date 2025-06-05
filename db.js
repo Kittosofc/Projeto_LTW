@@ -1,13 +1,13 @@
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
+const con = mysql.createConnection({
   host: 'localhost',      // o el IP si está en otro servidor
   user: 'root',     // ejemplo: 'root'
   password: '', // tu contraseña de MySQL
   database: 'sgpc'      // tu base de datos
 });
 
-connection.connect((err) => {
+con.connect((err) => {
   if (err) {
     console.error('❌ Error al conectar con la base de datos:', err);
     return;
@@ -16,4 +16,5 @@ connection.connect((err) => {
   
 });
 
-module.exports = connection;
+// Exportamos el objeto promisificado
+module.exports = con.promise();

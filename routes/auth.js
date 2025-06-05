@@ -1,30 +1,36 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../auth/authController.js');
+const db = require('../db');
+
 
 router.post('/login', authController.login);
 
-
-router.get('/api/usuario', (req, res) => {
+router.get('/api/usuario', async (req, res) => {
   if (!req.session.usuario) {
     return res.status(401).json({ error: 'No autenticado' });
-  } 
-  res.json({
-    nome: req.session.usuario.nome,
-    foto: req.session.usuario.foto,
-    pontos: req.session.usuario.puntos_actuales
-  });
+  }
+
+  try {
+    const [rows] = await db.query(`
+      SELECT t.puntos_actuales FROM tarjetas_fidelidad t
+      JOIN clientes c ON t.id_cliente = c.id_cliente
+      WHERE c.id_cliente = ?
+    `, [req.session.usuario.id_cliente]);
+
+    const puntos_actuales = rows.length > 0 ? rows[0].puntos_actuales : 0;
+
+    res.json({
+      nome: req.session.usuario.nome,
+      foto: req.session.usuario.foto,
+      puntos: puntos_actuales
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error obteniendo puntos' });
+  }
 });
 
-router.get('/logout', (req, res) => {
-  req.session.destroy(err => {
-    if (err) {
-      return res.status(500).send('Error cerrando sesión');
-    }
-    res.clearCookie('connect.sid'); // Borra cookie de sesión (opcional pero recomendado)
-    res.sendStatus(200);
-  });
-});
   
 
 module.exports = router;

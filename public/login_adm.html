@@ -13,14 +13,44 @@
     <div class="login-header">
       <h2>Área de Administração</h2>
     </div>
-    <form class="login-form">
-      <input type="email" placeholder="Email" required>
-      <div class="password-wrapper">
-        <input type="password" placeholder="Password" required>
-        <span class="info-icon" title="A sua palavra-passe é encriptada e nunca será partilhada.">?</span>
-      </div>
-      <button type="submit" class="login-button">Login</button>
-    </form>
+    <form class="login-form" method="POST" action="/admin/login">
+  <input type="email" name="email" placeholder="Email" required>
+  <div class="password-wrapper">
+    <input type="password" name="password" placeholder="Password" required>
+    <span class="info-icon" title="A sua palavra-passe é encriptada e nunca será partilhada.">?</span>
   </div>
+  <button type="submit" class="login-button">Login</button>
+</form>
+
+  </div>
+  <script>
+  document.querySelector('.login-form').addEventListener('submit', function (e) {
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const password = document.querySelector('input[name="password"]').value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validación básica
+    if (!email || !password) {
+      alert('Por favor, preencha todos os campos.');
+      e.preventDefault();
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      alert('Por favor, insira um email válido.');
+      e.preventDefault();
+      return;
+    }
+
+    if (password.length < 4) {
+      alert('A senha deve conter pelo menos 4 caracteres.');
+      e.preventDefault();
+      return;
+    }
+
+    // Si todo está bien, el formulario se envía
+  });
+</script>
 </body>
 </html>

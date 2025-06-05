@@ -14,6 +14,7 @@
           <!-- Aquí pondremos la foto y nombre dinámicos -->
           <img src="IMG/default.jpg" alt="Avatar do usuário" class="avatar" id="user-avatar" />
           <span id="user-name">Carregando...</span>
+          
         </div>
         <nav class="menu">
           <a href="dashboard.html">Home</a>
@@ -38,9 +39,9 @@
             <div class="reward-text">
                 <div>
                     <span class="emoji">🚗</span>
-                    <span>Você tem direito a uma lavagem grátis 🎉</span>
+                    <span>veja o que você pode ter 🎉</span>
                 </div>
-              <a href="#" class="redeem">Resgatar</a>
+              <a href="points1.html" class="redeem">Resgatar</a>
             </div>
             <div class="progress-bar">
               <div class="progress" style="width: 100%"></div>
@@ -75,17 +76,15 @@
           <!-- Aquí se insertarán los datos -->
         </aside>
           <script>
-  // Función para obtener el icono según el producto (puedes ajustar)
+  // Icono simple para canjes
   function getIcon(productName) {
-    if (productName.toLowerCase().includes('gasolina') || productName.toLowerCase().includes('abastecimento')) return '⛽';
-    if (productName.toLowerCase().includes('sprite')) return '🛍';
+    // Puedes personalizar los iconos según el producto
+    if (productName.toLowerCase().includes('gasolina')) return '⛽';
     if (productName.toLowerCase().includes('chocolate')) return '🍫';
     if (productName.toLowerCase().includes('cerveja')) return '🍺';
-    // Icono por defecto
-    return '🛒';
+    return '🛒'; // icono por defecto para canjes
   }
 
-  // Función para formatear fecha a algo simple tipo "Hoy", "Ayer" o fecha corta
   function formatDate(dateStr) {
     const fecha = new Date(dateStr);
     const hoy = new Date();
@@ -95,31 +94,27 @@
     if (fecha.toDateString() === hoy.toDateString()) return 'Hoy';
     if (fecha.toDateString() === ayer.toDateString()) return 'Ayer';
 
-    // Si quieres, puedes devolver solo el día-mes
     return fecha.toLocaleDateString();
   }
 
-  // Función para mostrar el historial
   async function cargarHistorial() {
     const container = document.getElementById('transactions');
-    container.innerHTML = ''; // limpiar
+    container.innerHTML = '';
 
     try {
-      const response = await fetch('/api/historial-pontos');
+      const response = await fetch('/api/historial-resgates/historial-canje');
       if (!response.ok) throw new Error('Error al obtener historial');
 
       const datos = await response.json();
 
-      // Agrupar por fecha (Hoy, Ayer, otras fechas)
+      // Agrupar por fecha
       const agrupados = {};
-
       datos.forEach(item => {
-        const fechaFormateada = formatDate(item.fecha_venta);
+        const fechaFormateada = formatDate(item.fecha_canje);
         if (!agrupados[fechaFormateada]) agrupados[fechaFormateada] = [];
         agrupados[fechaFormateada].push(item);
       });
 
-      // Generar HTML
       for (const fecha in agrupados) {
         const h4 = document.createElement('h4');
         h4.textContent = fecha;
@@ -140,17 +135,13 @@
           itemDiv.className = 'item';
           itemDiv.textContent = item.nombre_producto;
 
-          const priceSmall = document.createElement('small');
-          const precio = Number(item.precio) || 0;
-          priceSmall.textContent = `R$ ${precio.toFixed(2)}`;
 
 
           infoDiv.appendChild(itemDiv);
-          infoDiv.appendChild(priceSmall);
 
           const pointsDiv = document.createElement('div');
           pointsDiv.className = 'txn-points';
-          pointsDiv.textContent = `+ ${item.puntos_otorgados} Pts`;
+          pointsDiv.textContent = `- ${item.puntos_utilizados} Pts`;
 
           row.appendChild(iconDiv);
           row.appendChild(infoDiv);
@@ -166,10 +157,9 @@
     }
   }
 
-  // Cargar historial cuando la página esté lista
   window.addEventListener('DOMContentLoaded', cargarHistorial);
-  
 </script>
+
       </main>
 </body>
 <script>
@@ -182,7 +172,8 @@
       .then(data => {
         document.getElementById('user-name').textContent = data.nome;
         document.getElementById('user-avatar').src = 'IMG/' + data.foto;
-        document.getElementById('user-points').textContent = data.pontos + ' Pontos';
+        document.getElementById('user-points').textContent = data.puntos + ' Pontos';
+
       })
       .catch(err => {
         alert('Você não está autenticado. Por favor, faça login.');

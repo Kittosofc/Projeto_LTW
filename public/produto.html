@@ -11,20 +11,170 @@
 <body>
     <header>
         <div class="user-info">
-          <img src="IMG/ney.jpg" alt="Avatar do usuário" class="avatar">
-          <span>Neymar Jr.</span>
+          <img src="IMG/default.jpg" alt="Avatar do usuário" class="avatar" id="user-avatar">
+          <span id="user-name">Carregando...</span>
+          <span id="user-points" style="margin-left: 10px; color: #007bff;"></span>
         </div>
         <nav class="menu">
           <a href="dashboard.html">Home</a>
           <a href="settings.html">Settings</a>
           <a href="mapa.html">Mapa de postos</a>
+           <!-- Botón logout -->
+          <button id="logout-btn" style="margin-left:20px;">Logout</button>
         </nav>
       </header>
 
       <main>
         <div id="produto-container"></div>
       </main>
-    
-      <script src="JS/produto.js"></script>
+      <audio id="success-sound" src="SOUNDS/success.mp3" preload="auto"></audio>
+      <audio id="error-sound" src="SOUNDS/error.mp3" preload="auto"></audio>
+
+<script>
+  function atualizarUsuario() {
+    fetch('/api/usuario')
+      .then(res => {
+        if (!res.ok) throw new Error('No autenticado');
+        return res.json();
+      })
+      .then(data => {
+        const avatar = document.getElementById('user-avatar');
+        const name = document.getElementById('user-name');
+        const points = document.getElementById('user-points');
+
+        avatar.src = 'IMG/' + data.foto;
+        avatar.alt = data.nome;
+
+        name.textContent = data.nome;
+        points.textContent = `${data.puntos} Pontos`;
+      })
+      .catch(err => {
+        console.error('Erro ao atualizar dados do usuário:', err);
+      });
+  }
+
+  // Llamada inicial
+  atualizarUsuario();
+
+  // Opción: actualizar automáticamente cada X segundos si quieres mantenerlo
+  // setInterval(atualizarUsuario, 5000);
+
+  // Funcionalidad para logout
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    fetch('/logout')
+      .then(() => {
+        window.location.href = '/login.html';
+      })
+      .catch(() => {
+        alert('Erro ao sair. Tente novamente.');
+      });
+  });
+</script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  if (!id) {
+    document.getElementById("produto-container").innerText = "Produto não encontrado.";
+    return;
+  }
+
+  fetch('/api/resgatar-pontos/api/productos')
+    .then(res => res.json())
+    .then(productos => {
+      const produto = productos.find(p => p.id_producto_canje == id);
+
+      if (!produto) {
+        document.getElementById("produto-container").innerText = "Produto não encontrado.";
+        return;
+      }
+
+      document.getElementById("produto-container").innerHTML = `
+        <div class="container">
+          <div class="product-image">
+            <img src="IMG/${produto.foto_producto}" alt="${produto.nombre_producto}">
+          </div>
+          <div class="product-details">
+            <h1>${produto.nombre_producto}</h1>
+            <div class="points">${produto.puntos_necesarios} Pts</div>
+            <p>${produto.descripcion || 'Descrição não disponível.'}</p>
+            <button id="resgatar-btn" class="resgatar-btn">Resgatar</button>
+          </div>
+        </div>
+      `;
+        function animarPontos() {
+  const pontos = document.getElementById('user-points');
+  pontos.classList.add('highlight');
+  setTimeout(() => {
+    pontos.classList.remove('highlight');
+  }, 1000);
+}
+      // Aquí ya existe el botón, así que ahora sí puedes agregar el evento
+      document.getElementById("resgatar-btn").addEventListener("click", async () => {
+        const cliente_id = localStorage.getItem("cliente_id") || 1; // usa o valor real do login
+        const id_producto_canje = id;
+
+        try {
+          const res = await fetch("/api/resgatar-pontos", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ cliente_id, id_producto_canje }),
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+  atualizarUsuario(); // Atualiza pontos
+  animarPontos();  
+  const audio = document.getElementById("success-sound");
+  if (audio) audio.play();
+  // Opcional: mostrar mensaje sutil en pantalla (sem alert)
+  const div = document.createElement("div");
+  div.textContent = `✅ "${produto.nombre_producto}" resgatado com sucesso!`;
+  div.style.position = "fixed";
+  div.style.top = "20px";
+  div.style.right = "20px";
+  div.style.background = "#4caf50";
+  div.style.color = "white";
+  div.style.padding = "10px 20px";
+  div.style.borderRadius = "8px";
+  div.style.zIndex = 1000;
+  document.body.appendChild(div);
+  setTimeout(() => div.remove(), 800);
+}
+ else {
+   const audio = document.getElementById("error-sound");
+  if (audio) audio.play();
+  const div = document.createElement("div");
+  div.textContent = `❌ resgatado sim sucesso!`;
+  div.style.position = "fixed";
+  div.style.top = "20px";
+  div.style.right = "20px";
+  div.style.background = "#b32020";
+  div.style.color = "white";
+  div.style.padding = "10px 20px";
+  div.style.borderRadius = "8px";
+  div.style.zIndex = 1000;
+  document.body.appendChild(div);
+  setTimeout(() => div.remove(), 1000);
+          }
+          
+        } catch (err) {
+          console.error(err);
+          alert("❌ Erro ao conectar com o servidor.");
+        }
+      });
+    })
+    .catch(err => {
+      console.error("Erro ao carregar produto:", err);
+      document.getElementById("produto-container").innerText = "Erro ao carregar produto.";
+    });
+});
+</script>
+
 </body>
 </html>

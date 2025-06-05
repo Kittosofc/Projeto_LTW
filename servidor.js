@@ -30,6 +30,27 @@ app.use('/', authRoutes);
 const historialPontosRoutes = require('./routes/historialPuntos.js');
 app.use('/api/historial-pontos', historialPontosRoutes);
 
+//resgatar puntos
+const resgatarPontosRoutes = require('./routes/resgatarPontos.js');
+app.use('/api/resgatar-pontos', resgatarPontosRoutes);
+
+const historialResgatesRoutes = require('./routes/historialResgates.js');
+app.use('/api/historial-resgates', historialResgatesRoutes);
+
+
+const auth_admRoutes = require('./routes/auth_admin');
+app.use('/admin', auth_admRoutes);
+const auth_admRoutes2 = require('./routes/auth_admin2');
+app.use('/', auth_admRoutes2);
+
+const usuariosRoutes = require('./routes/usuarios');
+app.use('/', usuariosRoutes);
+
+const clientesRoutes = require('./routes/clientes');
+app.use('/',clientesRoutes); // esto importa las rutas /api/clientes
+const rolesRoutes = require('./routes/roles');
+app.use('/',rolesRoutes); // esto importa las rutas /api/clientes
+
 
 // Iniciar servidor
 app.listen(port, () => {
