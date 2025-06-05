@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'A AGENDAR ALTA AND BAIXA BATCH CLIENTE COLON COMMA COMMENT CONCLUIDO CONSULTA DATA DATE DE DEF DIAS DISPONIBILIDADE DOMINGO DOT DOUBLE_EQUALS DURACAO DURATION ELSE EM EQUALS FERIAS FILTRO FUNCIONARIO FUNCIONARIOS GREATER_EQUAL GREATER_THAN HORAS HYPHEN ID IF INDISPONIBILIDADE LBRACKET LESS_EQUAL LESS_THAN LPAREN MANHA MEDIA MINUS MOTIVO NOITE NOT_EQUALS NUMBER OR PARA PERIODO PLUS PRIORIDADE QUARTA QUINTA RBRACKET RPAREN SABADO SEGUNDA SEMICOLON SERVICO SEXTA STRING TARDE TERCA TIME TIPO TURNOprogram : comandoscomandos : comando\n| comandos comandocomando : AGENDAR COLON propriedadespropriedades : propriedade\n| propriedades propriedadepropriedade : chave COLON valorchave : ID\n| SERVICO\n| CLIENTE\n| DATA\n| PRIORIDADE\n| MOTIVO\n| DURACAO\n| DIAS\n| HORAS\n| FUNCIONARIO\n| FUNCIONARIOS\n| PERIODO\n| FILTRO\n| TURNO\n| PARA\n| DE\n| CONCLUIDO\n| EMvalor : STRING\n| NUMBER\n| DATE\n| TIME\n| ID\n| ALTA\n| MEDIA\n| BAIXA'
+_lr_signature = 'A AGENDAR ALTA AND BAIXA BATCH CLIENTE COLON COMMA COMMENT CONCLUIDO CONSULTA DATA DATE DE DEF DIAS DISPONIBILIDADE DOMINGO DOT DOUBLE_EQUALS DURACAO DURATION ELSE EM EQUALS FERIAS FILTRO FUNCIONARIO FUNCIONARIOS GREATER_EQUAL GREATER_THAN HORAS HYPHEN ID IF INDISPONIBILIDADE LBRACKET LESS_EQUAL LESS_THAN LPAREN MANHA MEDIA MINUS MOTIVO NOITE NOT_EQUALS NUMBER OR PARA PERIODO PLUS PRIORIDADE QUARTA QUINTA RBRACKET RPAREN SABADO SEGUNDA SEMICOLON SERVICO SEXTA STRING TARDE TERCA TIME TIPO TURNOprogram : comandoscomandos : comando\n| comandos comandocomando : AGENDAR COLON propriedades\n| AGENDAR propriedadespropriedades : propriedade\n| propriedades propriedadepropriedade : chave COLON valor\n| chave valorchave : ID\n| SERVICO\n| CLIENTE\n| DATA\n| PRIORIDADE\n| MOTIVO\n| DURACAO\n| DIAS\n| HORAS\n| FUNCIONARIO\n| FUNCIONARIOS\n| PERIODO\n| FILTRO\n| TURNO\n| PARA\n| DE\n| CONCLUIDO\n| EMvalor : STRING\n| NUMBER\n| DATE\n| TIME\n| ID\n| ALTA\n| MEDIA\n| BAIXA'
     
-_lr_action_items = {'AGENDAR':([0,2,3,5,7,8,28,30,31,32,33,34,35,36,37,38,],[4,4,-2,-3,-4,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'$end':([1,2,3,5,7,8,28,30,31,32,33,34,35,36,37,38,],[0,-1,-2,-3,-4,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'COLON':([4,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,],[6,29,-8,-9,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,]),'ID':([6,7,8,28,29,30,31,32,33,34,35,36,37,38,],[10,10,-5,-6,35,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'SERVICO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[11,11,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'CLIENTE':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[12,12,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'DATA':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[13,13,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'PRIORIDADE':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[14,14,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'MOTIVO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[15,15,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'DURACAO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[16,16,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'DIAS':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[17,17,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'HORAS':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[18,18,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'FUNCIONARIO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[19,19,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'FUNCIONARIOS':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[20,20,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'PERIODO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[21,21,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'FILTRO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[22,22,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'TURNO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[23,23,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'PARA':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[24,24,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'DE':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[25,25,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'CONCLUIDO':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[26,26,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'EM':([6,7,8,28,30,31,32,33,34,35,36,37,38,],[27,27,-5,-6,-7,-26,-27,-28,-29,-30,-31,-32,-33,]),'STRING':([29,],[31,]),'NUMBER':([29,],[32,]),'DATE':([29,],[33,]),'TIME':([29,],[34,]),'ALTA':([29,],[36,]),'MEDIA':([29,],[37,]),'BAIXA':([29,],[38,]),}
+_lr_action_items = {'AGENDAR':([0,2,3,5,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[4,4,-2,-3,-5,-6,-4,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'$end':([1,2,3,5,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[0,-1,-2,-3,-5,-6,-4,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'COLON':([4,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,],[6,30,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,]),'ID':([4,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,],[10,10,10,-6,36,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,10,-7,36,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'SERVICO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[11,11,11,-6,11,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'CLIENTE':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[12,12,12,-6,12,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'DATA':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[13,13,13,-6,13,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'PRIORIDADE':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[14,14,14,-6,14,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'MOTIVO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[15,15,15,-6,15,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'DURACAO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[16,16,16,-6,16,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'DIAS':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[17,17,17,-6,17,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'HORAS':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[18,18,18,-6,18,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'FUNCIONARIO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[19,19,19,-6,19,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'FUNCIONARIOS':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[20,20,20,-6,20,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'PERIODO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[21,21,21,-6,21,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'FILTRO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[22,22,22,-6,22,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'TURNO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[23,23,23,-6,23,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'PARA':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[24,24,24,-6,24,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'DE':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[25,25,25,-6,25,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'CONCLUIDO':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[26,26,26,-6,26,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'EM':([4,6,7,8,28,29,31,32,33,34,35,36,37,38,39,40,],[27,27,27,-6,27,-7,-9,-28,-29,-30,-31,-32,-33,-34,-35,-8,]),'STRING':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[32,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,32,]),'NUMBER':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[33,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,33,]),'DATE':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[34,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,34,]),'TIME':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[35,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,35,]),'ALTA':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[37,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,37,]),'MEDIA':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[38,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,38,]),'BAIXA':([9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,30,],[39,-10,-11,-12,-13,-14,-15,-16,-17,-18,-19,-20,-21,-22,-23,-24,-25,-26,-27,39,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'comandos':([0,],[2,]),'comando':([0,2,],[3,5,]),'propriedades':([6,],[7,]),'propriedade':([6,7,],[8,28,]),'chave':([6,7,],[9,9,]),'valor':([29,],[30,]),}
+_lr_goto_items = {'program':([0,],[1,]),'comandos':([0,],[2,]),'comando':([0,2,],[3,5,]),'propriedades':([4,6,],[7,28,]),'propriedade':([4,6,7,28,],[8,8,29,29,]),'chave':([4,6,7,28,],[9,9,9,9,]),'valor':([9,30,],[31,40,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -30,34 +30,36 @@ _lr_productions = [
   ('program -> comandos','program',1,'p_program','parser_lssV2.py',5),
   ('comandos -> comando','comandos',1,'p_comandos','parser_lssV2.py',9),
   ('comandos -> comandos comando','comandos',2,'p_comandos','parser_lssV2.py',10),
-  ('comando -> AGENDAR COLON propriedades','comando',3,'p_comando_agendar','parser_lssV2.py',17),
-  ('propriedades -> propriedade','propriedades',1,'p_propriedades','parser_lssV2.py',21),
-  ('propriedades -> propriedades propriedade','propriedades',2,'p_propriedades','parser_lssV2.py',22),
-  ('propriedade -> chave COLON valor','propriedade',3,'p_propriedade','parser_lssV2.py',29),
-  ('chave -> ID','chave',1,'p_chave','parser_lssV2.py',33),
-  ('chave -> SERVICO','chave',1,'p_chave','parser_lssV2.py',34),
-  ('chave -> CLIENTE','chave',1,'p_chave','parser_lssV2.py',35),
-  ('chave -> DATA','chave',1,'p_chave','parser_lssV2.py',36),
-  ('chave -> PRIORIDADE','chave',1,'p_chave','parser_lssV2.py',37),
-  ('chave -> MOTIVO','chave',1,'p_chave','parser_lssV2.py',38),
-  ('chave -> DURACAO','chave',1,'p_chave','parser_lssV2.py',39),
-  ('chave -> DIAS','chave',1,'p_chave','parser_lssV2.py',40),
-  ('chave -> HORAS','chave',1,'p_chave','parser_lssV2.py',41),
-  ('chave -> FUNCIONARIO','chave',1,'p_chave','parser_lssV2.py',42),
-  ('chave -> FUNCIONARIOS','chave',1,'p_chave','parser_lssV2.py',43),
-  ('chave -> PERIODO','chave',1,'p_chave','parser_lssV2.py',44),
-  ('chave -> FILTRO','chave',1,'p_chave','parser_lssV2.py',45),
-  ('chave -> TURNO','chave',1,'p_chave','parser_lssV2.py',46),
-  ('chave -> PARA','chave',1,'p_chave','parser_lssV2.py',47),
-  ('chave -> DE','chave',1,'p_chave','parser_lssV2.py',48),
-  ('chave -> CONCLUIDO','chave',1,'p_chave','parser_lssV2.py',49),
-  ('chave -> EM','chave',1,'p_chave','parser_lssV2.py',50),
-  ('valor -> STRING','valor',1,'p_valor','parser_lssV2.py',54),
-  ('valor -> NUMBER','valor',1,'p_valor','parser_lssV2.py',55),
-  ('valor -> DATE','valor',1,'p_valor','parser_lssV2.py',56),
-  ('valor -> TIME','valor',1,'p_valor','parser_lssV2.py',57),
-  ('valor -> ID','valor',1,'p_valor','parser_lssV2.py',58),
-  ('valor -> ALTA','valor',1,'p_valor','parser_lssV2.py',59),
-  ('valor -> MEDIA','valor',1,'p_valor','parser_lssV2.py',60),
-  ('valor -> BAIXA','valor',1,'p_valor','parser_lssV2.py',61),
+  ('comando -> AGENDAR COLON propriedades','comando',3,'p_comando_agendar','parser_lssV2.py',18),
+  ('comando -> AGENDAR propriedades','comando',2,'p_comando_agendar','parser_lssV2.py',19),
+  ('propriedades -> propriedade','propriedades',1,'p_propriedades','parser_lssV2.py',27),
+  ('propriedades -> propriedades propriedade','propriedades',2,'p_propriedades','parser_lssV2.py',28),
+  ('propriedade -> chave COLON valor','propriedade',3,'p_propriedade','parser_lssV2.py',36),
+  ('propriedade -> chave valor','propriedade',2,'p_propriedade','parser_lssV2.py',37),
+  ('chave -> ID','chave',1,'p_chave','parser_lssV2.py',44),
+  ('chave -> SERVICO','chave',1,'p_chave','parser_lssV2.py',45),
+  ('chave -> CLIENTE','chave',1,'p_chave','parser_lssV2.py',46),
+  ('chave -> DATA','chave',1,'p_chave','parser_lssV2.py',47),
+  ('chave -> PRIORIDADE','chave',1,'p_chave','parser_lssV2.py',48),
+  ('chave -> MOTIVO','chave',1,'p_chave','parser_lssV2.py',49),
+  ('chave -> DURACAO','chave',1,'p_chave','parser_lssV2.py',50),
+  ('chave -> DIAS','chave',1,'p_chave','parser_lssV2.py',51),
+  ('chave -> HORAS','chave',1,'p_chave','parser_lssV2.py',52),
+  ('chave -> FUNCIONARIO','chave',1,'p_chave','parser_lssV2.py',53),
+  ('chave -> FUNCIONARIOS','chave',1,'p_chave','parser_lssV2.py',54),
+  ('chave -> PERIODO','chave',1,'p_chave','parser_lssV2.py',55),
+  ('chave -> FILTRO','chave',1,'p_chave','parser_lssV2.py',56),
+  ('chave -> TURNO','chave',1,'p_chave','parser_lssV2.py',57),
+  ('chave -> PARA','chave',1,'p_chave','parser_lssV2.py',58),
+  ('chave -> DE','chave',1,'p_chave','parser_lssV2.py',59),
+  ('chave -> CONCLUIDO','chave',1,'p_chave','parser_lssV2.py',60),
+  ('chave -> EM','chave',1,'p_chave','parser_lssV2.py',61),
+  ('valor -> STRING','valor',1,'p_valor','parser_lssV2.py',65),
+  ('valor -> NUMBER','valor',1,'p_valor','parser_lssV2.py',66),
+  ('valor -> DATE','valor',1,'p_valor','parser_lssV2.py',67),
+  ('valor -> TIME','valor',1,'p_valor','parser_lssV2.py',68),
+  ('valor -> ID','valor',1,'p_valor','parser_lssV2.py',69),
+  ('valor -> ALTA','valor',1,'p_valor','parser_lssV2.py',70),
+  ('valor -> MEDIA','valor',1,'p_valor','parser_lssV2.py',71),
+  ('valor -> BAIXA','valor',1,'p_valor','parser_lssV2.py',72),
 ]

@@ -13,10 +13,16 @@ def p_comandos(p):
     else:
         p[0] = p[1] + [p[2]]
 
+# Comando agendar com ou sem dois-pontos
 def p_comando_agendar(p):
-    '''comando : AGENDAR COLON propriedades'''
-    p[0] = ('agendar', p[3])
+    '''comando : AGENDAR COLON propriedades
+               | AGENDAR propriedades'''
+    if len(p) == 4:
+        p[0] = ('agendar', p[3])
+    else:
+        p[0] = ('agendar', p[2])
 
+# Propriedades (lista)
 def p_propriedades(p):
     '''propriedades : propriedade
                     | propriedades propriedade'''
@@ -25,9 +31,14 @@ def p_propriedades(p):
     else:
         p[0] = p[1] + [p[2]]
 
+# Propriedade com ou sem dois-pontos
 def p_propriedade(p):
-    '''propriedade : chave COLON valor'''
-    p[0] = (p[1], p[3])
+    '''propriedade : chave COLON valor
+                   | chave valor'''
+    if len(p) == 4:
+        p[0] = (p[1], p[3])
+    else:
+        p[0] = (p[1], p[2])
 
 def p_chave(p):
     '''chave : ID
@@ -71,11 +82,11 @@ parser = yacc.yacc()
 
 if __name__ == "__main__":
     code = '''
-    agendar:
+    agendar
         servico: "troca de óleo"
-        cliente: "Ana Costa"
-        data: 2025-03-12
-        prioridade: alta
+        cliente "Ana Costa"
+        data 2025-03-12
+        prioridade alta
     '''
     result = parser.parse(code)
     print("Resultado da análise sintática:")
