@@ -10,23 +10,24 @@
 <body>
     <div class="container">
         <div class="left-side">
-          <form class="form-login" action="/login" method="POST">
-            <div class="container-title">
-                <h2>Acesse sua conta</h2>
-                <p>Informe suas credenciais para acessar sua conta e ter acesso aos benefícios exclusivos dos clientes dinoco</p>
-            </div>
-            
-            <input class="input" type="text" name="username" placeholder="Nome completo" required>
-            <input class="input" type="text" name="nif" placeholder="NIF" required>
-            <input class="input" type="email" name="email" placeholder="Email" required>
-            <input class="input" type="password" name="password" placeholder="Senha" required>
+          <form class="form-login" action="/register" method="POST">
+  <div class="container-title">
+    <h2>Crie sua conta</h2>
+    <p>Informe suas credenciais para acessar sua conta e ter acesso aos benefícios exclusivos dos clientes Dinoco</p>
+  </div>
 
-             <label class="checkbox-label">
-                <input class="checkbox" type="checkbox" name="terms" required>
-                <span>Li e aceito os <a href="#">termos de uso</a></span>
-            </label>
-            <button type="submit">Criar conta</button>
-          </form>
+  <input class="input" type="text" name="username" placeholder="Nome completo" required>
+  <input class="input" type="email" name="email" placeholder="Email" required>
+  <input class="input" type="password" name="password" placeholder="Senha" required>
+
+  <label class="checkbox-label">
+    <input class="checkbox" type="checkbox" name="terms" required>
+    <span>Li e aceito os <a href="#">termos de uso</a></span>
+  </label>
+
+  <button type="submit">Criar conta</button>
+</form>
+
         </div>
     
         <div class="right-side">

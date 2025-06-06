@@ -31,6 +31,41 @@ router.get('/api/usuario', async (req, res) => {
   }
 });
 
-  
+  //Registo
+  router.post('/register', async (req, res) => {
+  const { username, nif, email, password, terms } = req.body;
+
+  if (!terms) {
+    return res.status(400).send('É necessário aceitar os termos de uso.');
+  }
+
+  try {
+    const [existing] = await db.query(
+      'SELECT id_usuario FROM usuarios WHERE email = ?', 
+      [email]
+    );
+
+    if (existing.length > 0) {
+      return res.status(400).send('Email já registado.');
+    }
+
+    const plainPassword = password;
+
+    // 👇 Insere o novo utilizador
+    await db.query(`
+      INSERT INTO usuarios (nombre, email, password_hash, id_rol, estado)
+      VALUES (?, ?, ?, 5, 1)
+    `, [username, email, plainPassword]);
+
+    // ✅ Redireciona para o menu de login
+    res.redirect('/login.html');
+
+  } catch (err) {
+    console.error('Erro ao registar cliente:', err.message);
+    res.status(500).send('Erro ao criar conta.');
+  }
+});
+
 
 module.exports = router;
+

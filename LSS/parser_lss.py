@@ -488,4 +488,3 @@ batch:
     print(f"RESUMO DOS TESTES")
     print(f"{'='*60}")
     print(f"Cumprido: {success_count}/{total_tests}")
-    print("O ANDREW É GAY!")
