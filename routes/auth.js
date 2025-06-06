@@ -49,19 +49,34 @@ router.get('/api/usuario', async (req, res) => {
       return res.status(400).send('Email já registado.');
     }
 
-    const plainPassword = password;
-
-    // 👇 Insere o novo utilizador
-    await db.query(`
+    // 1. Inserir novo usuário
+    const [usuarioResult] = await db.query(`
       INSERT INTO usuarios (nombre, email, password_hash, id_rol, estado)
       VALUES (?, ?, ?, 5, 1)
-    `, [username, email, plainPassword]);
+    `, [username, email, password]);
 
-    // ✅ Redireciona para o menu de login
+    const id_usuario = usuarioResult.insertId;
+    console.log("✅ Usuário inserido:", id_usuario);
+
+    // Inserir cliente
+const [clienteResult] = await db.query(`
+  INSERT INTO clientes (id_usuario, direccion, telefono, fecha_registro)
+  VALUES (?, NULL, NULL, NOW())
+`, [id_usuario]);
+
+const id_cliente = clienteResult.insertId; // ✅ nome correto
+
+// Inserir tarjeta de fidelidade
+await db.query(`
+  INSERT INTO tarjetas_fidelidad (id_cliente, puntos_actuales)
+  VALUES (?, 1000)
+`, [id_cliente]); // ✅ usa id_cliente (não cliente_id!)
+
+
     res.redirect('/login.html');
 
   } catch (err) {
-    console.error('Erro ao registar cliente:', err.message);
+    console.error('❌ Erro ao registar cliente:', err.message);
     res.status(500).send('Erro ao criar conta.');
   }
 });

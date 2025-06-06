@@ -38,7 +38,15 @@ exports.login = async (req, res) => {
       foto: usuario.foto || 'default.jpg'
     };
 
-    return res.redirect('/dashboard.html');
+    return res.json({
+  id_usuario: usuario.id_usuario,
+  id_cliente: usuario.id_cliente,
+  nome: usuario.nombre,
+  tipo: usuario.tipo,
+  foto: usuario.foto || 'default.jpg',
+  pontos: usuario.pontos_actuales || 0
+});
+
   } catch (err) {
     console.error('Erro na consulta SQL:', err);
     return res.status(500).send('Erro no servidor');

@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }
       // Aquí ya existe el botón, así que ahora sí puedes agregar el evento
       document.getElementById("resgatar-btn").addEventListener("click", async () => {
-        const cliente_id = localStorage.getItem("cliente_id") || 1; // usa o valor real do login
+        const cliente_id = localStorage.getItem("cliente_id") ; // usa o valor real do login
         const id_producto_canje = id;
 
         try {
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const audio = document.getElementById("error-sound");
   if (audio) audio.play();
   const div = document.createElement("div");
-  div.textContent = `❌ resgatado sim sucesso!`;
+  div.textContent = `❌ resgatado sem sucesso!`;
   div.style.position = "fixed";
   div.style.top = "20px";
   div.style.right = "20px";

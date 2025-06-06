@@ -1,69 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - SGPC</title>
-    <link rel="stylesheet" href="CSS/main.css">
-    <link rel="stylesheet" href="CSS/login.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - SGPC</title>
+  <link rel="stylesheet" href="CSS/main.css">
+  <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
-    <div class="container">
-        <div class="left-side">
-          <form class="form-login" action="/login" method="POST">
-            <div class="container-title">
-                <h2>Acesse sua conta</h2>
-                <p>Informe suas credenciais para acessar sua conta e ter acesso aos benefícios exclusivos dos clientes dinoco</p>
-            </div>
-            
-            <input type="email" name="email" placeholder="Email" required>
-            <div class="password-container">
-              <input type="password" name="password" placeholder="Senha" required>
-              <a href="#" class="forgot">Esqueceu?</a>
-            </div>
-            <button type="submit">entrar</button>
-          </form>
+  <div class="container">
+    <div class="left-side">
+      <form class="form-login">
+        <div class="container-title">
+          <h2>Acesse sua conta</h2>
+          <p>Informe suas credenciais para acessar sua conta e ter acesso aos benefícios exclusivos dos clientes dinoco</p>
         </div>
-    
-        <div class="right-side">
-          <div class="overlay">
-            <h3>Ainda não possui uma conta?</h3>
-            <p>Crie uma conta gratuita e tenha acesso a todos os benefícios incríveis que só o posto dinâmico oferece.</p>
-            <a href="registrar.html" class="register-btn">Criar conta</a>
-          </div>
+        
+        <input type="email" name="email" placeholder="Email" required />
+        <div class="password-container">
+          <input type="password" name="password" placeholder="Senha" required />
+          <a href="#" class="forgot">Esqueceu?</a>
         </div>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <div class="right-side">
+      <div class="overlay">
+        <h3>Ainda não possui uma conta?</h3>
+        <p>Crie uma conta gratuita e tenha acesso a todos os benefícios incríveis que só o posto dinâmico oferece.</p>
+        <a href="registrar.html" class="register-btn">Criar conta</a>
       </div>
+    </div>
+  </div>
 
-    
-      <script>
-  document.querySelector('.form-login').addEventListener('submit', function (e) {
-    const email = document.querySelector('input[name="username"]').value.trim();
-    const password = document.querySelector('input[name="password"]').value.trim();
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // Validación básica
-    if (!email || !password) {
-      alert('Por favor, preencha todos os campos.');
+  <script>
+    document.querySelector('.form-login').addEventListener('submit', async function (e) {
       e.preventDefault();
-      return;
-    }
 
-    if (!emailRegex.test(email)) {
-      alert('Por favor, insira um email válido.');
-      e.preventDefault();
-      return;
-    }
+      const form = e.target;
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
 
-    if (password.length < 4) {
-      alert('A senha deve conter pelo menos 4 caracteres.');
-      e.preventDefault();
-      return;
-    }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Si todo está bien, el formulario se envía
-  });
-</script>
 
+      if (!email || !password) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        alert('Por favor, insira um email válido.');
+        return;
+      }
+
+      if (password.length < 4) {
+        alert('A senha deve conter pelo menos 4 caracteres.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({ email, password })
+        });
+
+        if (!res.ok) {
+          const erro = await res.text();
+          alert('Erro ao iniciar sessão: ' + erro);
+          return;
+        }
+
+        const data = await res.json();
+
+        if (data.id_cliente) {
+          localStorage.setItem("cliente_id", data.id_cliente);
+        }
+
+        window.location.href = '/dashboard.html';
+      } catch (err) {
+        console.error('Erro no login:', err);
+        alert('Erro inesperado ao tentar iniciar sessão.');
+      }
+    });
+  </script>
 </body>
 </html>
