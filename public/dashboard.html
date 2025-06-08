@@ -163,32 +163,34 @@
       </main>
 </body>
 <script>
-    // Cuando cargue la página, pedimos info al backend
-    fetch('/api/usuario')
-      .then(res => {
-        if (!res.ok) throw new Error('No autenticado');
-        return res.json();
-      })
-      .then(data => {
-        document.getElementById('user-name').textContent = data.nome;
-        document.getElementById('user-avatar').src = 'IMG/' + data.foto;
-        document.getElementById('user-points').textContent = data.puntos + ' Pontos';
+  // Quando carregue a página, pedimos info ao backend
+  fetch('/api/usuario')
+    .then(res => {
+      if (!res.ok) throw new Error('Não autenticado');
+      return res.json();
+    })
+    .then(data => {
+      document.getElementById('user-name').textContent = data.nome;
+      document.getElementById('user-avatar').src = 'IMG/' + data.foto;
 
-      })
-      .catch(err => {
-        alert('Você não está autenticado. Por favor, faça login.');
-        window.location.href = '/login.html'; // Redirigir a login
-      });
-
-    // Funcionalidad para logout
-    document.getElementById('logout-btn').addEventListener('click', () => {
-      fetch('/logout')
-        .then(() => {
-          window.location.href = '/login.html'; // Redirige al login tras cerrar sesión
-        })
-        .catch(() => {
-          alert('Erro ao sair. Tente novamente.');
-        });
+      // 👉 ESTA É A LINHA QUE MOSTRA OS PONTOS:
+      document.getElementById('user-points').textContent = data.pontos + ' Pontos';
+    })
+    .catch(err => {
+      alert('Você não está autenticado. Por favor, faça login.');
+      window.location.href = '/login.html'; // Redirecionar para login
     });
-  </script>
+
+  // Funcionalidade para logout
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    fetch('/logout')
+      .then(() => {
+        window.location.href = '/login.html'; // Redireciona ao login após logout
+      })
+      .catch(() => {
+        alert('Erro ao sair. Tente novamente.');
+      });
+  });
+</script>
+
 </html>

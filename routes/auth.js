@@ -2,13 +2,15 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../auth/authController.js');
 const db = require('../db');
+const bcrypt = require('bcrypt');
 
-
+// Rota de login
 router.post('/login', authController.login);
 
+// Rota para obter dados do utilizador autenticado (ex: pontos)
 router.get('/api/usuario', async (req, res) => {
-  if (!req.session.usuario) {
-    return res.status(401).json({ error: 'No autenticado' });
+  if (!req.session.usuario || !req.session.usuario.id_cliente) {
+    return res.status(401).json({ error: 'Não autenticado ou cliente inválido' });
   }
 
   try {
@@ -18,21 +20,22 @@ router.get('/api/usuario', async (req, res) => {
       WHERE c.id_cliente = ?
     `, [req.session.usuario.id_cliente]);
 
-    const puntos_actuales = rows.length > 0 ? rows[0].puntos_actuales : 0;
+    const pontos = rows.length > 0 ? rows[0].puntos_actuales : 0;
 
     res.json({
       nome: req.session.usuario.nome,
       foto: req.session.usuario.foto,
-      puntos: puntos_actuales
+      pontos // ← aqui envia o nome certo
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Error obteniendo puntos' });
+    res.status(500).json({ error: 'Erro ao obter pontos' });
   }
 });
 
-  //Registo
-  router.post('/register', async (req, res) => {
+
+// Rota de registo
+router.post('/register', async (req, res) => {
   const { username, nif, email, password, terms } = req.body;
 
   if (!terms) {
@@ -40,8 +43,9 @@ router.get('/api/usuario', async (req, res) => {
   }
 
   try {
+    // Verifica se o e-mail já está registado
     const [existing] = await db.query(
-      'SELECT id_usuario FROM usuarios WHERE email = ?', 
+      'SELECT id_usuario FROM usuarios WHERE email = ?',
       [email]
     );
 
@@ -49,30 +53,34 @@ router.get('/api/usuario', async (req, res) => {
       return res.status(400).send('Email já registado.');
     }
 
-    // 1. Inserir novo usuário
+    // Gera o hash da password
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+
+    // Inserir novo utilizador
     const [usuarioResult] = await db.query(`
       INSERT INTO usuarios (nombre, email, password_hash, id_rol, estado)
       VALUES (?, ?, ?, 5, 1)
-    `, [username, email, password]);
+    `, [username, email, passwordHash]);
 
     const id_usuario = usuarioResult.insertId;
     console.log("✅ Usuário inserido:", id_usuario);
 
     // Inserir cliente
-const [clienteResult] = await db.query(`
-  INSERT INTO clientes (id_usuario, direccion, telefono, fecha_registro)
-  VALUES (?, NULL, NULL, NOW())
-`, [id_usuario]);
+    const [clienteResult] = await db.query(`
+      INSERT INTO clientes (id_usuario, direccion, telefono, fecha_registro)
+      VALUES (?, NULL, NULL, NOW())
+    `, [id_usuario]);
 
-const id_cliente = clienteResult.insertId; // ✅ nome correto
+    const id_cliente = clienteResult.insertId;
 
-// Inserir tarjeta de fidelidade
-await db.query(`
-  INSERT INTO tarjetas_fidelidad (id_cliente, puntos_actuales)
-  VALUES (?, 1000)
-`, [id_cliente]); // ✅ usa id_cliente (não cliente_id!)
+    // Inserir cartão de fidelidade
+    await db.query(`
+      INSERT INTO tarjetas_fidelidad (id_cliente, puntos_actuales)
+      VALUES (?, 1000)
+    `, [id_cliente]);
 
-
+    // Redireciona para login
     res.redirect('/login.html');
 
   } catch (err) {
@@ -81,6 +89,16 @@ await db.query(`
   }
 });
 
+// Rota de logout (opcional)
+router.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Erro ao terminar sessão:', err);
+      return res.status(500).send('Erro ao fazer logout');
+    }
+    res.clearCookie('connect.sid');
+    res.sendStatus(200);
+  });
+});
 
 module.exports = router;
-
