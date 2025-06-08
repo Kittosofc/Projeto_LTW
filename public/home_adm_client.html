@@ -231,18 +231,36 @@
       });
 
       document.getElementById("eliminar-btn").addEventListener("click", () => {
-        const selecionados = getSelecionados();
-        if (selecionados.length === 0) {
-          alert("Seleciona pelo menos um cliente para eliminar.");
-          return;
-        }
-        if (confirm(`Deseja eliminar ${selecionados.length} cliente(s)?`)) {
-          Promise.all(selecionados.map(id =>
-            fetch(`/api/clientes/${id}`, { method: 'DELETE' })
-          )).then(() => location.reload())
-            .catch(err => alert("Erro ao eliminar: " + err));
-        }
-      });
+  const selecionados = getSelecionados();
+  if (selecionados.length === 0) {
+    alert("Seleciona pelo menos um cliente para eliminar.");
+    return;
+  }
+
+  if (confirm(`Deseja eliminar ${selecionados.length} cliente(s)?`)) {
+    Promise.all(
+      selecionados.map(id =>
+        fetch(`/api/clientes/${id}`, { method: 'DELETE' })
+          .then(res => {
+            if (!res.ok) throw new Error(`Erro ao eliminar cliente ${id}`);
+            return res.json();
+          })
+          .then(json => {
+            console.log(`Cliente ${id} eliminado:`, json);
+          })
+      )
+    )
+    .then(() => {
+      alert("Clientes eliminados com sucesso.");
+      location.reload();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erro ao eliminar: " + err.message);
+    });
+  }
+});
+
 
       fetch('/api/clientes')
         .then(res => res.json())
