@@ -14,44 +14,78 @@
 
 <div class="container-fluid full-height center-content">
   <!-- Header -->
-  <div class="header-info">
-    <div class="d-flex align-items-center gap-3">
-      <div class="avatar"></div>
-      <strong>Matheus</strong>
-    </div>
-    <div class="location">
-      <i class="bi bi-geo-alt-fill"></i> Medianeira, PR
-    </div>
-  </div>  
+   <div class="header-info">
+  <div class="d-flex align-items-center gap-3">
+    <img id="foto-usuario" src="IMG/default.jpg" alt="Avatar" class="avatar" style="width: 50px; height: 50px; border-radius: 50%;">
+    <strong id="nome-usuario">Utilizador</strong>
+    <span id="rol-usuario">Cargo</span>
+  </div>
+  <div class="location">
+    <i class="bi bi-geo-alt-fill">Medianeira, PR</i>
+  </div>
+</div>
+
+
 
   <!-- Grid de Cartões -->
   <div class="row g-4 card-container">
     <div class="col-md-6">
-      <div class="card-option">
-        <i class="bi bi-display"></i>
-        <div class="card-title">Caixa</div>
-      </div>
+  <a href="caixa.html" class="text-decoration-none">
+    <div class="card-option">
+      <i class="bi bi-display"></i>
+      <div class="card-title">Caixa</div>
     </div>
-    <div class="col-md-6">
-      <div class="card-option">
-        <i class="bi bi-cart3"></i>
-        <div class="card-title">Estoque</div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card-option">
-        <i class="bi bi-box-seam"></i>
-        <div class="card-title">Produtos</div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card-option">
-        <i class="bi bi-box-arrow-right"></i>
-        <div class="card-title">Sair</div>
-      </div>
-    </div>
-  </div>
+  </a>
 </div>
+<div class="col-md-6">
+  <a href="home_gerirstock.html" class="text-decoration-none">
+    <div class="card-option">
+      <i class="bi bi-cart3"></i>
+      <div class="card-title">Estoque</div>
+    </div>
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="produtos.html" class="text-decoration-none">
+    <div class="card-option">
+      <i class="bi bi-box-seam"></i>
+      <div class="card-title">Produtos</div>
+    </div>
+  </a>
+</div>
+<div class="col-md-6">
+  <a href="/logout" class="text-decoration-none">
+    <div class="card-option">
+      <i class="bi bi-box-arrow-right"></i>
+      <div class="card-title">Sair</div>
+    </div>
+  </a>
+</div>
+
+</div>
+<script>
+  // Ao carregar a página
+  window.addEventListener('DOMContentLoaded', () => {
+    fetch('/api/usuario-adm')
+      .then(res => {
+        if (!res.ok) throw new Error('Não autenticado');
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById('nome-usuario').textContent = data.nome;
+        document.getElementById('rol-usuario').textContent = data.rol;
+
+        document.getElementById('foto-usuario').src = `IMG/${data.foto}`;
+      })
+      .catch(err => {
+        console.error(err);
+        // Redireciona para login se não autenticado
+        window.location.href = '/admin/login_adm.html';
+      });
+  });
+
+  
+</script>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

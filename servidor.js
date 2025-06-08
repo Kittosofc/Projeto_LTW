@@ -52,6 +52,12 @@ const rolesRoutes = require('./routes/roles');
 app.use('/',rolesRoutes); // esto importa las rutas /api/clientes
 
 
+
+
+const productosRoutes = require('./routes/productos');
+app.use('/',productosRoutes);
+
+
 // Iniciar servidor
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);

@@ -198,3 +198,21 @@
     .product-name {
       font-weight: bold;
     }
+.table-header {
+    display: grid;
+  grid-template-columns: 40px 1fr 100px 100px 100px 100px; /* garantir 5 colunas além da checkbox */
+  align-items: center;
+}
+
+.category {
+  display: block;
+  color: #333;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.product-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 100px 100px 100px 100px; /* garantir 5 colunas além da checkbox */
+  align-items: center;
+}

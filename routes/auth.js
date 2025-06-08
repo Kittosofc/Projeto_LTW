@@ -8,7 +8,7 @@ router.post('/login', authController.login);
 
 router.get('/api/usuario', async (req, res) => {
   if (!req.session.usuario) {
-    return res.status(401).json({ error: 'No autenticado' });
+    return res.status(401).json({ error: 'No autenticado' });z
   }
 
   try {
