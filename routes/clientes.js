@@ -67,7 +67,7 @@ router.delete('/api/clientes/:id', async (req, res) => {
 
     const id_usuario = cliente.id_usuario;
 
-    await db.query(`DELETE FROM canjes_pontos WHERE id_cliente = ?`, [id]);
+    await db.query(`DELETE FROM canjes_puntos WHERE id_cliente = ?`, [id]);
     await db.query(`DELETE FROM tarjetas_fidelidad WHERE id_cliente = ?`, [id]);
     await db.query(`DELETE FROM ventas WHERE id_cliente = ?`, [id]);
     await db.query(`DELETE FROM agendamientos WHERE id_cliente = ?`, [id]);
