@@ -146,9 +146,7 @@ body {
 }
 
 /* Ajuste para os itens com submenu */
-.main-menu > li.has-submenu {
-  margin-bottom: 15px; /* Espaço entre itens principais */
-}
+
 
 /* Se quiser destacar visualmente os itens com submenu */
 .main-menu > li.has-submenu > a {

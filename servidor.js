@@ -13,10 +13,13 @@ app.use(express.json());
 
 // Configuración de sesión
 app.use(session({
-  secret: 'palavra_secreta', // Cambia esto por algo secreto
+  secret: 'minha_chave_secreta',
   resave: false,
   saveUninitialized: false,
-  cookie: { } // Duración de la sesión (ej: 10 minutos)
+  cookie: {
+    secure: false, // true se usares HTTPS
+    httpOnly: true
+  }
 }));
 
 // Servir archivos estáticos desde 'public'
@@ -51,11 +54,17 @@ app.use('/',clientesRoutes); // esto importa las rutas /api/clientes
 const rolesRoutes = require('./routes/roles');
 app.use('/',rolesRoutes); // esto importa las rutas /api/clientes
 
-
+const ventasRoutes = require('./routes/ventas');
+app.use('/',ventasRoutes); // esto importa las rutas /api/ventas
 
 
 const productosRoutes = require('./routes/productos');
 app.use('/',productosRoutes);
+
+const editarCliente = require('./routes/editarcliente.js');
+
+// Usando a rota /cliente para as requisições de edição
+app.use('/cliente', editarCliente);
 
 
 // Iniciar servidor

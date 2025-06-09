@@ -12,7 +12,7 @@ overflow: hidden;
         
 .container {
 width: 100vw;
-height: 99vh;
+height: 100vh;
 display: flex;
 flex-direction: column;
 }
@@ -29,7 +29,7 @@ letter-spacing: 1px;
         
 .client-section {
 display: flex;
-max-width: 200px;
+
 width: 100%;
 padding-right: 40px;
 padding-left: 20px; /* Adicionado para afastar da esquerda */
@@ -38,28 +38,33 @@ margin-top: 20px;
 justify-content: space-between;
 align-items: center;
 }
-        .client-info {
-            display: flex;
-            flex-direction: column;
-            background: none;
-            border: none;
-            box-shadow: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
 
-        .client-label {
-            color: #3A9BD1;
-            font-weight: bold;
-            font-size: 14px;
-        }
 
-        .client-status {
-            color: #888;
-            font-size: 12px;
-        }
+.right-section{
+    padding: 20px;
+}
+.client-info {
+  display: flex;
+  flex-direction: column;
+  background-color: #e9f6fd;
+  border-left: 4px solid #3A9BD1;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.client-label {
+  color: #3A9BD1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.client-status {
+  color: #444;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
 
         .action-buttons {
             display: flex;
@@ -102,7 +107,7 @@ align-items: center;
             margin-bottom: 30px;
         }
         
-        .search-input {
+        .search-input, .search-quant {
             width: 82.5%;
             padding: 12px 40px 12px 15px;
             border: none;
@@ -111,14 +116,6 @@ align-items: center;
             background-color: #f5f6f7;
         }
 
-        .search-quant{
-            width: 80%;
-            padding: 12px 40px 12px 15px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            background-color: #f5f6f7;
-        }
 
         .search-price{
             width: 140%;
@@ -139,17 +136,10 @@ align-items: center;
         }
         
         .quantity-price-container {
-            display: flex;
-            gap: 20px;
+            position: relative;
             margin-bottom: 30px;
         }
         
-        .input-group {
-            background-color: #f5f6f7;
-            display: flex;
-            flex-direction: column;
-            border-radius: 6px;
-        }
         
         .input-label {
             font-size: 12px;
@@ -322,3 +312,99 @@ align-items: center;
             border-radius: 3px;
             font-size: 10px;
         }
+
+
+
+#product-details {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f4faff;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.2s ease-in-out;
+}
+#product-details:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+#product-details p {
+  margin: 6px 0;
+}
+#product-details img {
+  display: block;
+  margin: 12px auto;
+  max-width: 120px;
+}
+
+
+.cart-list {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+}
+
+.cart-list div {
+  background-color: #eef6fb;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: 13.5px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.cart-list div:hover {
+  background-color: #d9edf8;
+}
+
+
+    .add-to-cart {
+      margin-top: 10px;
+      padding: 10px;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .add-to-cart:hover {
+      background-color: #0056b3;
+    }
+    
+    /* CSS */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.input-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.valor-pago-total {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.valor-pago-total:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

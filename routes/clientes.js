@@ -80,5 +80,28 @@ router.delete('/api/clientes/:id', async (req, res) => {
     res.status(500).json({ error: 'Erro ao eliminar cliente' });
   }
 });
+// GET /api/clientes/telefone/:telefone
+router.get('/api/clientes/telefone/:telefone', async (req, res) => {
+  const { telefone } = req.params;
+
+  try {
+    const [rows] = await db.query(`
+      SELECT c.id_cliente, u.nombre AS nome, tf.puntos_actuales
+      FROM clientes c
+      JOIN usuarios u ON u.id_usuario = c.id_usuario
+      LEFT JOIN tarjetas_fidelidad tf ON tf.id_cliente = c.id_cliente
+      WHERE c.telefono = ?
+    `, [telefone]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'Cliente não encontrado' });
+    }
+
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erro ao buscar cliente' });
+  }
+});
 
 module.exports = router;

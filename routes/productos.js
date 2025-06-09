@@ -13,6 +13,50 @@ router.get('/api/productos', async (req, res) => {
   }
 });
 
+// GET /api/productos/:id
+router.get('/api/productos/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const [rows] = await db.query(`
+      SELECT id_producto, nombre_producto, stock_actual, precio, imagen, puntos_por_unidad
+      FROM productos
+      WHERE id_producto = ?
+    `, [id]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ message: 'Produto não encontrado' });
+    }
+
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erro ao buscar produto' });
+  }
+});
+
+
+router.post('/api/produtos', async (req, res) => {
+  const { nombre_producto, stock_actual, precio, puntos_por_unidad = 0, imagen } = req.body;
+
+  if (!nombre_producto || !stock_actual || !precio) {
+    return res.status(400).json({ message: 'Campos obrigatórios em falta.' });
+  }
+
+  try {
+    const [result] = await db.query(`
+      INSERT INTO productos (nombre_producto, stock_actual, precio, puntos_por_unidad, imagen)
+      VALUES (?, ?, ?, ?, ?)
+    `, [nombre_producto, stock_actual, precio, puntos_por_unidad, imagen]);
+
+    res.status(201).json({ id: result.insertId, message: 'Produto adicionado com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao inserir produto:', error);
+    res.status(500).json({ message: 'Erro ao inserir produto' });
+  }
+});
+
+
 
 router.put('/api/productos/:id', async (req, res) => {
   const { id } = req.params;
@@ -44,5 +88,6 @@ router.put('/api/productos/:id/stock', async (req, res) => {
     res.status(500).json({ error: 'Erro ao atualizar stock' });
   }
 });
+
 
 module.exports = router;

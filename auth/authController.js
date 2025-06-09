@@ -1,5 +1,5 @@
 const db = require('../db');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); // certifica-te que tens isto no topo
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;

@@ -47,8 +47,19 @@ router.post('/login', async (req, res) => {
     console.error(err);
     return res.status(500).send('Erro no servidor');
   }
+  
 });
+router.post('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Erro ao destruir sessão:', err);
+      return res.status(500).send('Erro no logout');
+    }
 
+    res.clearCookie('connect.sid'); // limpa cookie de sessão
+    res.status(200).send('Logout efetuado');
+  });
+});
 
 
 module.exports = router;

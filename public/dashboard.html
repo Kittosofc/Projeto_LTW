@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <header>
+    <headexr>
+      <header>
         <div class="user-info">
           <!-- Aquí pondremos la foto y nombre dinámicos -->
           <img src="IMG/default.jpg" alt="Avatar do usuário" class="avatar" id="user-avatar" />
@@ -23,7 +24,7 @@
           <!-- Botón logout -->
           <button id="logout-btn" style="margin-left:20px;">Logout</button>
         </nav>
-      </header>
+        </header>
     
       <main class="container">
         <section class="main-panel">
@@ -165,6 +166,7 @@
 <script>
   // Quando carregue a página, pedimos info ao backend
   fetch('/api/usuario')
+  
     .then(res => {
       if (!res.ok) throw new Error('Não autenticado');
       return res.json();
@@ -174,7 +176,7 @@
       document.getElementById('user-avatar').src = 'IMG/' + data.foto;
 
       // 👉 ESTA É A LINHA QUE MOSTRA OS PONTOS:
-      document.getElementById('user-points').textContent = data.pontos + ' Pontos';
+      document.getElementById('user-points').textContent = data.puntos + ' Pontos';
     })
     .catch(err => {
       alert('Você não está autenticado. Por favor, faça login.');

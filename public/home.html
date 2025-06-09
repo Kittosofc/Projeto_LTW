@@ -46,7 +46,7 @@
   </a>
 </div>
 <div class="col-md-6">
-  <a href="produtos.html" class="text-decoration-none">
+  <a href="NovoProduto.html" class="text-decoration-none">
     <div class="card-option">
       <i class="bi bi-box-seam"></i>
       <div class="card-title">Produtos</div>
@@ -54,7 +54,8 @@
   </a>
 </div>
 <div class="col-md-6">
-  <a href="/logout" class="text-decoration-none">
+
+  <a href="login_adm.html" id="logout-btn" class="text-decoration-none">
     <div class="card-option">
       <i class="bi bi-box-arrow-right"></i>
       <div class="card-title">Sair</div>
@@ -64,6 +65,21 @@
 
 </div>
 <script>
+    // Ao carregar a página
+  window.addEventListener('DOMContentLoaded', () => {
+    fetch('/api/usuario-adm')
+      .then(res => {
+        if (!res.ok) throw new Error('Não autenticado');
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById('nome-usuario').textContent = data.nome;
+        document.getElementById('rol-usuario').textContent = data.rol;
+
+        document.getElementById('foto-usuario').src = `IMG/${data.foto}`;
+      })
+  });
+  
   // Ao carregar a página
   window.addEventListener('DOMContentLoaded', () => {
     fetch('/api/usuario-adm')

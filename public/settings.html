@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Informações</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+  <link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="user-info">
+          <!-- Foto e nome do usuário -->
+          <img src="IMG/default.jpg" alt="Avatar do usuário" class="avatar" id="user-avatar" />
+          <span id="user-name">Carregando...</span>
+        </div>
+        <nav class="menu">
+          <a href="dashboard.html">Home</a>
+          <a href="settings.html">Settings</a>
+          <a href="mapa.html">Mapa de postos</a>
+          <button id="logout-btn" style="margin-left:20px;">Logout</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="main-panel">
+            <div class="form-container">
+                <h2>Editar Dados do Cliente</h2>
+                <form id="edit-form">
+
+                    <div class="form-group">
+                        <label for="direcao">Direção</label>
+                        <input type="text" id="direcao" name="direcao" placeholder="Sua direção" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="Seu telefone" />
+                    </div>
+
+                    <button type="submit" class="btn">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Chama a API para carregar os dados do usuário
+fetch('/cliente/api/usuario')  // Alteração aqui, de /api/usuario para /cliente/api/usuario
+  .then(response => response.json())
+  .then(data => {
+    // Preenche os campos de formulário com os dados do usuário
+    document.getElementById('telefone').value = data.telefono;
+    document.getElementById('user-name').textContent = data.nome;
+    document.getElementById('user-avatar').src = data.foto || 'IMG/default.jpg'; // Exibe a foto do usuário ou padrão
+  })
+  .catch(error => {
+    console.error('Erro ao carregar os dados do usuário:', error);
+  });
+
+// Envia os dados alterados de volta para a API
+document.getElementById('edit-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData);
+
+  fetch('/cliente/api/usuario', {  // Alteração aqui também
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert('Dados atualizados com sucesso!');
+  })
+  .catch(error => {
+    console.error('Erro ao atualizar os dados:', error);
+  });
+});
+
+    </script>
+</body>
+</html>

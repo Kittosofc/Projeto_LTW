@@ -11,10 +11,7 @@
 </head>
 <body data-theme="light">
   <aside class="sidebar">
-    <div class="user-info">
-      <img src="IMG/me.jpg" alt="Avatar" class="avatar">
-      <span class="username">Matheus</span>
-    </div>
+
     <nav>
     <ul class="main-menu">
     <li class="has-submenu">
@@ -28,22 +25,7 @@
             <li>Relatórios</li>
         </ul>
     </li>
-    <li class="has-submenu">
-        <a href="#">
-             <svg viewBox="0 0 24 24" class="icon-box" xmlns="http://www.w3.org/2000/svg">
-  <path d="M21 6.5l-9-4-9 4L12 11l9-4.5z" />
-  <path d="M3 7.3v10.4c0 .5.3 1 .8 1.2l8 3.5c.4.2.9.2 1.3 0l8-3.5c.5-.2.8-.7.8-1.2V7.3L12 12 3 7.3z" />
-</svg>
-            <span>Stock</span>
 
-        </a>
-        <ul class="sub-menu">
-            <li>Listar utilizadores</li>
-            <li>Adicionar novo utilizador</li>
-            <li>Editar utilizador</li>
-            <li>Desativar/Apagar utilizador</li>
-        </ul>
-    </li>
     <li>
         <a href="#">
             <svg viewBox="0 0 24 24" class="icon-add" xmlns="http://www.w3.org/2000/svg">
@@ -84,10 +66,8 @@
 
     <section class="product-card">
     <div class="product-info">
-      <img src="IMG\Cola.png" alt="Coca Cola" class="product-image" />
+      <img src="IMG\sim_imagen.jpg" alt="Coca Cola" class="product-image" />
       <div class="product-text">
-        <h2 class="product-title">Coca Cola Lata 350ml</h2>
-        <p class="product-supplier">Fornecido by coca-cola</p>
       </div>
       <button class="link-button">
         <a href="https://pt.wikipedia.org/wiki/Coca-Cola" target="_blank" class="link-button" aria-label="Abrir página do produto">
@@ -99,20 +79,47 @@
       </button>
     </div>
 
-    <form class="product-form">
-      <input type="text" value="Coca Cola Lata 350ml" disabled />
-      <textarea rows="3" disabled>
-Lorem ipsum dolor sit amet consectetur. Et volutpat enim arcu nunc sit habitasse vitae. Faucibus id ipsum et egestas sed malesuada diam in lorem.
-      </textarea>
-      <input type="text" value="Bebida" disabled />
+    <form class="product-form" id="form-novo-produto">
+  <input type="text" name="nombre_producto" placeholder="Nome do Produto" required />
 
-      <div class="price-qty">
-        <input type="text" value="$ 4.69" disabled />
-        <input type="text" value="Qtd 360" disabled />
-      </div>
+  <div class="price-qty">
+    <input type="number" name="precio" step="0.01" placeholder="Preço" required />
+    <input type="number" name="stock_actual" placeholder="Quantidade" required />
+  </div>
 
-      <button type="button" class="register-button">Cadastrar produto</button>
-    </form>
+  <input type="number" name="puntos_por_unidad" placeholder="Pontos por unidade" />
+  <input type="text" name="imagen" placeholder="Caminho da imagem (ex: IMG/Cola.png)" />
+
+  <button type="submit" class="register-button">Cadastrar produto</button>
+</form>
+<script>
+document.getElementById('form-novo-produto').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+
+  try {
+    const response = await fetch('/api/produtos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert('Produto cadastrado com sucesso!');
+      this.reset();
+    } else {
+      const erro = await response.json();
+      alert('Erro: ' + erro.message);
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Erro na requisição');
+  }
+});
+</script>
+
     </section>
   </main>
 <script src="JS/script.js"></script>

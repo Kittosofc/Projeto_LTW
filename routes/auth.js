@@ -32,8 +32,8 @@ router.get('/api/usuario', async (req, res) => {
 });
 
   //Registo
-  router.post('/register', async (req, res) => {
-  const { username, nif, email, password, terms } = req.body;
+router.post('/register', async (req, res) => {
+  const { username, email, password, direcao, telefone } = req.body;
 
   if (!terms) {
     return res.status(400).send('É necessário aceitar os termos de uso.');
@@ -49,29 +49,31 @@ router.get('/api/usuario', async (req, res) => {
       return res.status(400).send('Email já registado.');
     }
 
-    // 1. Inserir novo usuário
+    // 🔐 Encriptar password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // 1. Inserir usuário
     const [usuarioResult] = await db.query(`
       INSERT INTO usuarios (nombre, email, password_hash, id_rol, estado)
       VALUES (?, ?, ?, 5, 1)
-    `, [username, email, password]);
+    `, [username, email, hashedPassword]);
 
     const id_usuario = usuarioResult.insertId;
     console.log("✅ Usuário inserido:", id_usuario);
 
-    // Inserir cliente
-const [clienteResult] = await db.query(`
-  INSERT INTO clientes (id_usuario, direccion, telefono, fecha_registro)
-  VALUES (?, NULL, NULL, NOW())
-`, [id_usuario]);
+    // 2. Inserir cliente com direcao e telefone
+    const [clienteResult] = await db.query(`
+      INSERT INTO clientes (id_usuario, direccion, telefono, fecha_registro)
+      VALUES (?, ?, ?, NOW())
+    `, [id_usuario, direcao || null, telefone || null]);
 
-const id_cliente = clienteResult.insertId; // ✅ nome correto
+    const id_cliente = clienteResult.insertId;
 
-// Inserir tarjeta de fidelidade
-await db.query(`
-  INSERT INTO tarjetas_fidelidad (id_cliente, puntos_actuales)
-  VALUES (?, 1000)
-`, [id_cliente]); // ✅ usa id_cliente (não cliente_id!)
-
+    // 3. Criar cartão de fidelidade
+    await db.query(`
+      INSERT INTO tarjetas_fidelidad (id_cliente, puntos_actuales)
+      VALUES (?, 1000)
+    `, [id_cliente]);
 
     res.redirect('/login.html');
 
