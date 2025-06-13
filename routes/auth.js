@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const authController = require('../auth/authController.js');
 const db = require('../db');
+const bcrypt = require('bcrypt');
+
 
 
 router.post('/login', authController.login);
@@ -33,7 +35,7 @@ router.get('/api/usuario', async (req, res) => {
 
   //Registo
 router.post('/register', async (req, res) => {
-  const { username, email, password, direcao, telefone } = req.body;
+  const { username, email, password, direcao, telefone, terms } = req.body;
 
   if (!terms) {
     return res.status(400).send('É necessário aceitar os termos de uso.');
@@ -72,7 +74,7 @@ router.post('/register', async (req, res) => {
     // 3. Criar cartão de fidelidade
     await db.query(`
       INSERT INTO tarjetas_fidelidad (id_cliente, puntos_actuales)
-      VALUES (?, 1000)
+      VALUES (?, 100)
     `, [id_cliente]);
 
     res.redirect('/login.html');
